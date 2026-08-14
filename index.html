@@ -3,29 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>東區認證全方位AI24｜AI 課程 Prompt</title>
+  <title> Jimmy AI 實戰 | 提示詞庫</title>
   <style>
     :root {
       --primary: #2563eb;
       --primary-hover: #1d4ed8;
-      --bg: #f1f5f9;
+      --bg: #f8fafc;
       --card-bg: #ffffff;
       --text: #1e293b;
       --text-muted: #64748b;
       --border: #e2e8f0;
-      --tag-bg: #e0e7ff;
-      --tag-text: #3730a3;
-      --code-bg: #f8fafc;
+      --tag-bg: #eff6ff;
+      --tag-text: #1d4ed8;
+      --code-bg: #0f172a;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
 
     /* 頂部導覽列 */
     header { background: #fff; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
     .header-container { max-width: 1400px; margin: 0 auto; padding: 12px 24px; display: flex; justify-content: space-between; align-items: center; }
     .brand { display: flex; align-items: center; gap: 12px; }
-    .brand-logo { width: 36px; height: 36px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2rem; }
+    .brand-logo { width: 36px; height: 36px; background: var(--primary); color: white; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2rem; }
     .brand-text h1 { font-size: 1.05rem; font-weight: 700; color: #0f172a; }
     .brand-text p { font-size: 0.8rem; color: var(--text-muted); }
 
@@ -34,52 +35,52 @@
     .tab-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
     .tab-btn:hover:not(.active) { background: #e2e8f0; }
 
-    /* 主佈局：三欄式 */
+    /* 三欄佈局 */
     .main-layout { max-width: 1400px; margin: 24px auto; padding: 0 24px; display: grid; grid-template-columns: 240px 1fr 220px; gap: 24px; align-items: start; }
 
-    /* 左側選單 */
+    /* 左側與右側邊欄 */
     .sidebar-left, .sidebar-right { background: var(--card-bg); border-radius: 10px; border: 1px solid var(--border); padding: 16px; position: sticky; top: 80px; }
     .menu-title { font-size: 0.85rem; font-weight: 700; color: var(--text-muted); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.05em; }
     .menu-list { list-style: none; }
-    .menu-item { margin-bottom: 6px; }
-    .menu-link { display: flex; align-items: center; gap: 8px; padding: 8px 10px; border-radius: 6px; text-decoration: none; color: #334155; font-size: 0.9rem; transition: 0.15s; font-weight: 500; }
-    .menu-link:hover { background: #f1f5f9; color: var(--primary); }
-    .menu-link.active { background: #eff6ff; color: var(--primary); font-weight: 600; }
+    .menu-item { margin-bottom: 8px; }
+    .menu-link { display: flex; align-items: center; gap: 8px; padding: 8px 10px; border-radius: 6px; text-decoration: none; color: #334155; font-size: 0.9rem; font-weight: 600; }
+    .menu-link.active { background: #eff6ff; color: var(--primary); }
     .menu-badge { background: var(--primary); color: white; border-radius: 50%; width: 20px; height: 20px; display: inline-flex; align-items: center; justify-content: center; font-size: 0.75rem; }
-    .sub-menu { list-style: none; margin-left: 28px; margin-top: 4px; }
-    .sub-menu a { display: block; padding: 4px 0; font-size: 0.85rem; color: #64748b; text-decoration: none; }
-    .sub-menu a:hover { color: var(--primary); }
+    .sub-menu { list-style: none; margin-left: 20px; margin-top: 4px; border-left: 2px solid #e2e8f0; padding-left: 10px; }
+    .sub-menu a { display: block; padding: 5px 0; font-size: 0.85rem; color: #64748b; text-decoration: none; transition: 0.15s; }
+    .sub-menu a:hover { color: var(--primary); font-weight: 500; }
 
-    /* 中間內容區 */
+    /* 中間內容區塊 */
     .content-area { display: flex; flex-direction: column; gap: 24px; }
-    .content-card { background: var(--card-bg); border-radius: 10px; border: 1px solid var(--border); padding: 24px; }
-    .section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; border-bottom: 2px solid #f1f5f9; padding-bottom: 12px; }
-    .section-num { background: var(--primary); color: white; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; }
-    .section-title { font-size: 1.25rem; font-weight: 700; color: #0f172a; }
-    .theme-tag { display: inline-block; background: var(--tag-bg); color: var(--tag-text); font-size: 0.85rem; padding: 4px 10px; border-radius: 4px; font-weight: 500; margin-bottom: 16px; }
+    .content-card { background: var(--card-bg); border-radius: 10px; border: 1px solid var(--border); padding: 28px; }
+    .section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; border-bottom: 2px solid #f1f5f9; padding-bottom: 12px; }
+    .section-num { background: var(--primary); color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1rem; }
+    .section-title { font-size: 1.3rem; font-weight: 700; color: #0f172a; }
+    .theme-tag { display: inline-block; background: var(--tag-bg); color: var(--tag-text); font-size: 0.85rem; padding: 5px 12px; border-radius: 6px; font-weight: 600; margin-bottom: 20px; }
 
-    /* 表格樣式 */
-    .styled-table { width: 100%; border-collapse: collapse; margin: 16px 0 24px; font-size: 0.9rem; }
+    /* 表格設計 */
+    .styled-table { width: 100%; border-collapse: collapse; margin: 12px 0 20px; font-size: 0.9rem; }
     .styled-table th { background: #f8fafc; color: #475569; font-weight: 600; text-align: left; padding: 10px 14px; border: 1px solid var(--border); }
     .styled-table td { padding: 10px 14px; border: 1px solid var(--border); color: #334155; }
     .styled-table tr:nth-child(even) { background-color: #fafbfc; }
 
-    /* 提示詞卡片與複製按鈕 */
-    .prompt-box { background: var(--code-bg); border: 1px solid #cbd5e1; border-radius: 8px; margin: 16px 0; overflow: hidden; }
-    .prompt-header { background: #e2e8f0; padding: 8px 14px; display: flex; justify-content: space-between; align-items: center; }
+    /* 提示詞卡片 (Prompt Box) */
+    .prompt-box { background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; margin: 14px 0 20px; overflow: hidden; }
+    .prompt-header { background: #f1f5f9; padding: 8px 14px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; }
     .prompt-label { font-size: 0.85rem; font-weight: 700; color: #334155; }
     .copy-btn { background: #fff; color: #334155; border: 1px solid #cbd5e1; padding: 4px 12px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; cursor: pointer; transition: 0.2s; }
-    .copy-btn:hover { background: #f8fafc; border-color: #94a3b8; }
-    .prompt-content { padding: 14px; margin: 0; font-family: monospace; font-size: 0.875rem; white-space: pre-wrap; word-break: break-word; color: #1e293b; line-height: 1.5; }
+    .copy-btn:hover { background: #e2e8f0; }
+    .prompt-content { padding: 14px; margin: 0; font-family: Consolas, Monaco, "Courier New", monospace; font-size: 0.875rem; white-space: pre-wrap; word-break: break-word; color: #1e293b; line-height: 1.5; background: #ffffff; }
 
-    /* 提示通知條 */
-    .alert-box { background: #eff6ff; border-left: 4px solid var(--primary); padding: 12px 16px; border-radius: 0 6px 6px 0; font-size: 0.875rem; margin: 12px 0; }
+    .sub-section { margin-top: 32px; padding-top: 20px; border-top: 1px dashed #e2e8f0; }
+    .sub-title { font-size: 1.1rem; font-weight: 700; color: var(--primary); margin-bottom: 10px; }
+    .alert-box { background: #eff6ff; border-left: 4px solid var(--primary); padding: 12px 16px; border-radius: 0 6px 6px 0; font-size: 0.875rem; margin: 10px 0 16px; color: #1e40af; }
+    .note-text { font-size: 0.85rem; color: #64748b; margin-top: -10px; margin-bottom: 16px; }
 
     /* 右側快捷工具 */
-    .tool-btn { display: flex; align-items: center; justify-content: space-between; padding: 10px 12px; border: 1px solid var(--border); border-radius: 6px; margin-bottom: 8px; text-decoration: none; color: #334155; font-size: 0.875rem; font-weight: 500; transition: 0.2s; }
+    .tool-btn { display: flex; align-items: center; justify-content: space-between; padding: 9px 12px; border: 1px solid var(--border); border-radius: 6px; margin-bottom: 8px; text-decoration: none; color: #334155; font-size: 0.875rem; font-weight: 500; transition: 0.2s; }
     .tool-btn:hover { border-color: var(--primary); color: var(--primary); background: #f8fafc; }
 
-    /* 響應式佈局 */
     @media (max-width: 1024px) {
       .main-layout { grid-template-columns: 1fr; }
       .sidebar-left, .sidebar-right { display: none; }
@@ -94,14 +95,14 @@
       <div class="brand">
         <div class="brand-logo">AI</div>
         <div class="brand-text">
-          <h1>全方位 AI 實戰 | 提示詞庫</h1>
-          <p>專業實戰 Prompt 整理與應用</p>
+          <h1>東區認證全方位AI24｜AI 課程 Prompt</h1>
+          <p>專業實戰 Prompt 提示詞庫</p>
         </div>
       </div>
       <nav class="nav-tabs">
-        <a href="#step1" class="tab-btn active">咖啡館 / 寵物</a>
-        <a href="#step2" class="tab-btn">北海道旅遊</a>
-        <a href="#step3" class="tab-btn">AI影音廣告</a>
+        <a href="#unit1" class="tab-btn active">咖啡館 / 寵物</a>
+        <a href="#" class="tab-btn">北海道旅遊</a>
+        <a href="#" class="tab-btn">AI影音廣告</a>
       </nav>
     </div>
   </header>
@@ -109,44 +110,42 @@
   <!-- 主佈局區塊 -->
   <div class="main-layout">
 
-    <!-- 左側選單欄 -->
+    <!-- 左側選單 -->
     <aside class="sidebar-left">
       <div class="menu-title">課程單元</div>
       <ul class="menu-list">
         <li class="menu-item">
-          <a href="#step1" class="menu-link active">
+          <a href="#unit1" class="menu-link active">
             <span class="menu-badge">1</span> AI 協作四步驟
           </a>
           <ul class="sub-menu">
             <li><a href="#sub-ask">【問】釐清思路</a></li>
             <li><a href="#sub-rule">【定】產出草稿</a></li>
-            <li><a href="#sub-bone">【骨】邏輯骨架</a></li>
-            <li><a href="#sub-prod">【生】產出成果</a></li>
+            <li><a href="#sub-bone">【骨】邏輯骨架校準</a></li>
+            <li><a href="#sub-prod">【生】產出簡報與結果</a></li>
+            <li><a href="#sub-faq">常見 AI 詢問技巧</a></li>
           </ul>
         </li>
         <li class="menu-item">
-          <a href="#" class="menu-link"><span class="menu-badge" style="background:#64748b;">2</span> NotebookLM 應用</a>
-        </li>
-        <li class="menu-item">
-          <a href="#" class="menu-link"><span class="menu-badge" style="background:#64748b;">3</span> 簡報製作生成</a>
+          <a href="#unit2" class="menu-link"><span class="menu-badge" style="background:#64748b;">2</span> NotebookLM 應用</a>
         </li>
       </ul>
     </aside>
 
     <!-- 中間內容區 -->
     <main class="content-area">
-      <div class="content-card" id="step1">
+
+      <!-- 第一單元主卡片 -->
+      <div class="content-card" id="unit1">
         <div class="section-header">
           <div class="section-num">1</div>
           <div class="section-title">AI 協作四步驟</div>
         </div>
         <div class="theme-tag">📌 練習主題：咖啡館開店行銷企劃</div>
 
-        <h3 style="font-size: 1rem; margin-top: 10px;">詢問原則（GPS）</h3>
+        <h3 style="font-size: 1rem;">詢問原則（GPS）</h3>
         <table class="styled-table">
-          <thead>
-            <tr><th>字母</th><th>代表</th><th>核心提問</th></tr>
-          </thead>
+          <thead><tr><th>字母</th><th>代表</th><th>核心提問</th></tr></thead>
           <tbody>
             <tr><td><strong>G</strong></td><td>Goal 目標</td><td>我要達成什麼成效？</td></tr>
             <tr><td><strong>P</strong></td><td>Position 背景資料</td><td>我現在的情境、資源、限制是什麼？</td></tr>
@@ -154,24 +153,22 @@
           </tbody>
         </table>
 
-        <h3 style="font-size: 1rem; margin-top: 10px;">AI 協作四步驟（問定骨生）</h3>
+        <h3 style="font-size: 1rem;">AI 協作四步驟（問定骨生）</h3>
         <table class="styled-table">
-          <thead>
-            <tr><th>步驟</th><th>口訣</th><th>核心動作</th></tr>
-          </thead>
+          <thead><tr><th>步驟</th><th>口訣</th><th>白話好記</th><th>核心動作</th></tr></thead>
           <tbody>
-            <tr><td>步驟一</td><td><strong>【問】</strong>AI 問 AI</td><td>讓 AI 當顧問反問，釐清專家盲點與需求</td></tr>
-            <tr><td>步驟二</td><td><strong>【定】</strong>定標準</td><td>用 MD 結構化＋Code Block，定死知識文件規範</td></tr>
-            <tr><td>步驟三</td><td><strong>【骨】</strong>長骨架</td><td>管住 AI 過度生成，只產出邏輯骨架與大綱</td></tr>
-            <tr><td>步驟四</td><td><strong>【生】</strong>生結果</td><td>反向查證後，選對工具生出可用的最終成品</td></tr>
+            <tr><td>步驟一</td><td><strong>【問】</strong>AI 問 AI</td><td>釐清盲點</td><td>讓 AI 當顧問反問，把專家盲點和受眾看不懂的鴻溝問出來</td></tr>
+            <tr><td>步驟二</td><td><strong>【定】</strong>定標準</td><td>嚴查規矩</td><td>用 MD 結構化＋Code Block，把正確的知識文件定死，不讓 AI 瞎編</td></tr>
+            <tr><td>步驟三</td><td><strong>【骨】</strong>長骨架</td><td>排版卡位</td><td>管住 AI 過度積極，只長邏輯骨架大綱、不寫廢話內文</td></tr>
+            <tr><td>步驟四</td><td><strong>【生】</strong>生結果</td><td>適性生產</td><td>反向查證後，選對工具，生出可用的最終成品</td></tr>
           </tbody>
         </table>
 
-        <!-- 子章節：問 -->
-        <div id="sub-ask" style="margin-top: 24px;">
-          <h4 style="color: var(--primary);">【問】AI 問 AI — 釐清思路</h4>
+        <!-- 子單元 1：問 -->
+        <div class="sub-section" id="sub-ask">
+          <div class="sub-title">【問】AI 問 AI — 釐清思路（GPS：G目標＋P背景）</div>
           <div class="alert-box">
-            💡 <strong>AI 幻覺預防</strong>：先讓 AI 反向提問釐清約束條件，可顯著降低胡亂捏造的風險。
+            <strong>AI 幻覺預防</strong>：AI 產生看似合理但未經查證的內容。先讓 AI 反向提問釐清需求，確保在「已知約束條件」下產出。
           </div>
 
           <div class="prompt-box">
@@ -184,14 +181,10 @@
 對我提出5個問題，協助我釐清這份企劃的目標客群、核心賣點與重點。
 請一次提出所有問題，等我回答後再開始。</pre>
           </div>
-        </div>
 
-        <!-- 子章節：定 -->
-        <div id="sub-rule" style="margin-top: 24px;">
-          <h4 style="color: var(--primary);">【定】定標準 — 討論匯出 MD 檔</h4>
           <div class="prompt-box">
             <div class="prompt-header">
-              <span class="prompt-label">📌 S2：Prompt — 結構化定案資料</span>
+              <span class="prompt-label">📌 S2：Prompt — 「結構化的定案資料」，討論匯出MD檔</span>
               <button class="copy-btn" onclick="copyPrompt('p2', this)">複製</button>
             </div>
             <pre class="prompt-content" id="p2">我們剛才的討論已經完成，請將討論結果整理成一份 MD 檔，作為後續開新對話時的「背景資料」使用。
@@ -204,9 +197,187 @@
 
 輸出時請放入 Markdown 程式碼區塊，方便我直接複製存檔。</pre>
           </div>
+          <p class="note-text">➜ 目的：用於討論結束後整理結論，方便日後開新對話直接帶入背景接續進度。</p>
+        </div>
+
+        <!-- 子單元 2：定 -->
+        <div class="sub-section" id="sub-rule">
+          <div class="sub-title">【定】定標準 — 產出草稿</div>
+          <div class="alert-box">
+            <strong>定標準的三個關鍵要素</strong>：① 角色設定（決定語氣） ② 格式鎖定（指定結構） ③ 邊界聲明（禁止捏造數據）。
+          </div>
+
+          <div class="prompt-box">
+            <div class="prompt-header">
+              <span class="prompt-label">📌 情境1：完全交給 AI 決定架構</span>
+              <button class="copy-btn" onclick="copyPrompt('p3', this)">複製</button>
+            </div>
+            <pre class="prompt-content" id="p3">根據我們剛才討論的內容，產出正式文件。輸出時遵守以下規範：
+
+# 角色設定
+你是一位資深餐飲品牌顧問，擅長社區型咖啡館的定位與開店策略。
+
+# 任務
+針對「咖啡館開店行銷企劃」進行規劃。
+
+# 輸出格式
+請你依據討論內容，自行判斷最適合的內容架構與章節安排，
+每個章節標題需具體、不要用「其他」「補充」這類模糊字眼，例如：
+## 一、市場定位分析(STP)
+## 二、品牌差異化與核心賣點
+## 三、開店前置檢查清單(5項)
+## 四、首月行銷時程表(表格：階段/任務/負責人/狀態)
+
+# 邊界規範
+- 所有內容必須來自剛才的對話，禁止自行補充未討論的內容
+- 每點不超過30字
+- 禁止捏造具體數據(預算/業績僅寫「待填入」)</pre>
+          </div>
+          <p class="note-text">➜ 適合：還沒想好怎麼分章節，想先看看 AI 怎麼安排，再決定要不要調整。</p>
+
+          <div class="prompt-box">
+            <div class="prompt-header">
+              <span class="prompt-label">📌 情境2：先問 AI 建議架構，但不急著生成內容</span>
+              <button class="copy-btn" onclick="copyPrompt('p4', this)">複製</button>
+            </div>
+            <pre class="prompt-content" id="p4">你是一位資深餐飲品牌顧問，擅長社區型咖啡館的定位與開店策略。
+
+- 根據我們剛才討論的內容，請先不要急著寫草稿。
+- 請你先提出2~3種可能的「內容架構」安排方式（列出章節標題即可）
+- 簡短說明每種架構的適用情境，等我選定方向後再開始產出文案。</pre>
+          </div>
+          <p class="note-text">➜ 適合：想要參與架構決策，讓 AI 先給選項。</p>
+        </div>
+
+        <!-- 子單元 3：骨 -->
+        <div class="sub-section" id="sub-bone">
+          <div class="sub-title">【骨】長骨架 — 邏輯骨架校準</div>
+          <p style="font-size:0.9rem; margin-bottom:10px;"><strong>管住 AI 三招：</strong> ① 宣告禁令（禁止填充內文） ② 指定格式（以 Markdown 輸出） ③ 等待確認（輸出大綱後停止）。</p>
+
+          <div class="prompt-box">
+            <div class="prompt-header">
+              <span class="prompt-label">📌 版本一：簡單版（適合一般簡報情境）</span>
+              <button class="copy-btn" onclick="copyPrompt('p5', this)">複製</button>
+            </div>
+            <pre class="prompt-content" id="p5">現在進入【邏輯骨架校準階段】。
+
+請根據我們剛才完成的「咖啡館開店行銷企劃」報告，
+針對【咖啡館投資夥伴與創業顧問】擬定簡報大綱。
+
+規範：
+- 規劃約【8】張架構
+- 每頁須含主題與核心觀點，禁止跳級產出內文或旁白
+- 數據頁面請標註建議採用「便當盒排版法」
+- 僅輸出邏輯骨架後停止，等我確認後再繼續
+- 強制使用 Markdown code block 區塊輸出</pre>
+          </div>
+
+          <div class="prompt-box">
+            <div class="prompt-header">
+              <span class="prompt-label">📌 版本二：完整版（包含視覺與版面規格）</span>
+              <button class="copy-btn" onclick="copyPrompt('p6', this)">複製</button>
+            </div>
+            <pre class="prompt-content" id="p6"># 任務進度：【簡報大綱校準階段】
+
+## 銜接背景與角色設定
+- 資料來源：依據我們剛才完成的「咖啡館開店行銷企劃」報告
+- AI 角色：資深餐飲品牌顧問，協助將企劃轉化為具說服力的簡報邏輯
+- 簡報對象：咖啡館投資夥伴與創業顧問，偏好溫度感、重視可執行性
+
+## 簡報規格參數
+- 上台時間：10 分鐘
+- 投影片張數：約 8 張
+- 輸出格式：以「投影片 [編號]：[標題]」呈現
+- 每頁必含：核心論點摘要 + 建議視覺化圖型
+
+## 視覺與版面規格
+- 整體風格：溫暖質感風（木質紋理感、手寫字體點綴）
+- 色系：三色限定（主色：拿鐵棕 #6F4E37 / 輔色：奶泡白 #F5EFE6 / 底色：焦糖金 #C8924B）
+- 視覺質感：無陰影、無漸層、線條手繪感
+- 封面設計：強制預留上方 30% 標題空白區
+- 內頁排版：複雜數據頁標註「便當盒排版法」或「網格矩陣」
+
+## 強制約束
+- 禁止產出具體簡報文案、旁白或生圖指令
+- 僅輸出邏輯骨架後停止，等我確認後再繼續
+- 強制以 Markdown 程式碼區塊輸出大綱
+
+「報告背景已備齊，請開始擬定簡報邏輯大綱。」</pre>
+          </div>
+        </div>
+
+        <!-- 子單元 4：生 -->
+        <div class="sub-section" id="sub-prod">
+          <div class="sub-title">【生】生結果 — 產出簡報與最終成果</div>
+          <div class="alert-box">
+            <strong>反向查證（紅隊測試）</strong>：請 AI 扮演「主管／審查單位」挑毛病。<br>
+            <em>例：請扮演嚴格的投資加盟顧問，針對這份開店行銷企劃提出 3 個需要改善的問題。</em>
+          </div>
+
+          <div class="prompt-box">
+            <div class="prompt-header">
+              <span class="prompt-label">📌 簡報型 Prompt</span>
+              <button class="copy-btn" onclick="copyPrompt('p7', this)">複製</button>
+            </div>
+            <pre class="prompt-content" id="p7">邏輯大綱已確認。直接建立 Google 簡報。
+- 內容需填充每張投影片之正式文案
+- 聚焦於咖啡館開店初期90天的行銷時程與分工
+- 呈現對象：咖啡館投資夥伴與創業顧問
+- 產出後請顯示「匯出成簡報」的連結
+- 尺寸：16:9</pre>
+          </div>
+
+          <div class="prompt-box">
+            <div class="prompt-header">
+              <span class="prompt-label">📌 程式碼型 HTML 簡報 Prompt</span>
+              <button class="copy-btn" onclick="copyPrompt('p8', this)">複製</button>
+            </div>
+            <pre class="prompt-content" id="p8">邏輯大綱已確認。
+使用 HTML 與 Tailwind CSS 程式碼製作數位簡報。
+- 視覺風格：溫暖質感品牌風（拿鐵棕 + 奶泡白 + 焦糖金）
+- 結構規範：行銷時程採用【便當盒排版】，KPI/數據採用【數字卡片版型】
+- 請將結果以程式碼區塊呈現，並同步啟動「預覽 (Preview)」視窗
+- 尺寸：16:9</pre>
+          </div>
+        </div>
+
+        <!-- 子單元 5：常見 AI 問答技巧 -->
+        <div class="sub-section" id="sub-faq">
+          <div class="sub-title">常見 AI 詢問技巧</div>
+
+          <div class="prompt-box">
+            <div class="prompt-header">
+              <span class="prompt-label">📌 Q1：如何參考過去公文/文件（照貓畫虎）</span>
+              <button class="copy-btn" onclick="copyPrompt('p9', this)">複製</button>
+            </div>
+            <pre class="prompt-content" id="p9"># 角色與任務
+你是一位專業的行政與文書處理專家。請根據我上傳的參考附檔（前三次的公文/會議紀錄），學習其結構、排版格式、用字語氣與規範，並依據本次的新增內容，生成全新的文件。
+
+# 輸出限制（重要）
+- 請直接在對話框中以「文字與 Markdown 格式」完整顯示內容，方便我直接複製貼上。
+- 請勿產生任何下載檔案（如 Word、PDF 或 txt 檔），我只需要文字回覆。
+
+# 本次文件基本資訊
+- 文件類型：【例如：會議紀錄 / 公告 / 公文】
+- 本次會議/事件主題：【請輸入本次的主題】
+- 本次執行/會議日期：【請輸入日期】
+
+# 本次會議重點與核心內容
+【請在此處貼上或寫下本次會議的實際討論文字、決議事項或口述紀錄，字數不限，越詳細越好】</pre>
+          </div>
         </div>
 
       </div>
+
+      <!-- 第二單元預留卡片 -->
+      <div class="content-card" id="unit2">
+        <div class="section-header">
+          <div class="section-num" style="background:#64748b;">2</div>
+          <div class="section-title">NotebookLM 應用</div>
+        </div>
+        <p style="color: #64748b;">（後續可依相同方式增加 NotebookLM 的操作提示詞與來源整合心法）</p>
+      </div>
+
     </main>
 
     <!-- 右側工具快捷欄 -->
