@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Prompt</title>
+  <title>Jimmy AI Prompt | 提示詞庫</title>
   <style>
     :root {
       --primary: #2563eb;
@@ -27,7 +27,7 @@
     .header-container { max-width: 1440px; margin: 0 auto; padding: 12px 24px; display: flex; justify-content: space-between; align-items: center; }
     .brand { display: flex; align-items: center; gap: 12px; }
     .brand-logo { width: 36px; height: 36px; background: var(--primary); color: white; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2rem; }
-    .brand-text h1 { font-size: 1.05rem; font-weight: 700; color: #0f172a; }
+    .brand-text h1 { font-size: 1.05rem; font-weight: 700; color: #0f172a; margin-bottom: 2px; }
     .brand-text p { font-size: 0.8rem; color: var(--text-muted); }
 
     /* 頂部主題按鈕樣式 */
@@ -87,6 +87,7 @@
     .alert-warning { background: #fffbeb; border-left: 4px solid #f59e0b; padding: 16px; border-radius: 0 6px 6px 0; font-size: 0.9rem; margin: 10px 0 20px; color: #92400e; }
     .alert-warning ul { margin-left: 24px; margin-top: 8px; }
     .alert-warning li { margin-bottom: 4px; }
+    .alert-success { background: #f0fdfa; border-left: 4px solid #0d9488; padding: 12px 16px; border-radius: 0 6px 6px 0; font-size: 0.9rem; margin: 10px 0 16px; color: #115e59; }
     
     /* 小標籤與備註 */
     .note-text { font-size: 0.9rem; color: #475569; margin-top: 4px; margin-bottom: 24px; font-weight: 500; }
@@ -106,7 +107,8 @@
 
   <!-- 頂部導覽列 -->
   <header>
-<div class="brand">
+    <div class="header-container">
+      <div class="brand">
         <div class="brand-logo">AI</div>
         <div class="brand-text">
           <h1>Jimmy AI Prompt</h1>
@@ -114,7 +116,7 @@
         </div>
       </div>
       <nav class="nav-tabs">
-        <button class="tab-btn active" onclick="switchTheme('theme-coffee', this)">咖啡館 / 寵物</button>
+        <button class="tab-btn active" onclick="switchTheme('theme-coffee', this)">情境練習</button>
         <button class="tab-btn" onclick="switchTheme('theme-travel', this)">北海道旅遊</button>
         <button class="tab-btn" onclick="switchTheme('theme-video', this)">AI影音廣告</button>
         <a href="https://line.me" target="_blank" class="tab-btn">Line貼圖 ↗</a>
@@ -144,11 +146,11 @@
         <li class="menu-item">
           <a href="#unit2" class="menu-link"><span class="menu-badge badge-2">2</span> NotebookLM 應用</a>
           <ul class="sub-menu">
-            <li><a href="#nb-intro">› 功能介紹</a></li>
+            <li><a href="#nb-intro">› 功能介紹與限制</a></li>
             <li><a href="#nb-upload">› 參考來源上傳</a></li>
-            <li><a href="#nb-chat">› 對話練習</a></li>
-            <li><a href="#nb-export">› 匯出成品</a></li>
-            <li><a href="#nb-survey">› 問卷調查練習</a></li>
+            <li><a href="#nb-chat">› 對話與分析練習</a></li>
+            <li><a href="#nb-export">› 筆記與成品匯出</a></li>
+            <li><a href="#nb-audio">› 音訊導覽生成</a></li>
           </ul>
         </li>
         <!-- 單元 3 -->
@@ -157,14 +159,14 @@
           <ul class="sub-menu">
             <li><a href="#gamma-import">› 匯入大綱生成簡報</a></li>
             <li><a href="#gamma-prompt">› 簡報 Prompt 範本</a></li>
-            <li><a href="#gamma-template">› 課程統一 範本</a></li>
+            <li><a href="#gamma-template">› 課程統一範本</a></li>
           </ul>
         </li>
         <!-- 單元 4 -->
         <li class="menu-item">
           <a href="#unit4" class="menu-link"><span class="menu-badge badge-4">4</span> Canva 海報與社群</a>
           <ul class="sub-menu">
-            <li><a href="#canva-keys">› 快速鍵</a></li>
+            <li><a href="#canva-keys">› 常用快速鍵</a></li>
             <li><a href="#canva-tags">› 元素搜尋關鍵字</a></li>
             <li><a href="#canva-copy">› AI 文案生成</a></li>
           </ul>
@@ -175,7 +177,7 @@
     <!-- 中間內容區 -->
     <main class="content-area">
 
-      <!-- ==================== 主題 1：咖啡館 / 寵物 ==================== -->
+      <!-- ==================== 主題 1：情境練習 (咖啡館/寵物) ==================== -->
       <div id="theme-coffee" class="theme-content">
         
         <!-- 單元 1 -->
@@ -209,7 +211,6 @@
 
           <!-- 【問】 -->
           <div class="sub-section" id="sub-ask">
-            <!-- 修正：紅字標題與完整內文 -->
             <div class="sub-title" style="color:#991b1b;">【問】 AI 問 AI — 釐清思路 （GPS：G目標+P背景）</div>
             <div class="alert-box">
               <strong>AI 幻覺</strong>：AI 產生看似合理，但實際上錯誤、不存在或未經查證的內容。先讓 AI 反向提問釐清需求，確保 AI 在「已知的約束條件」下產出，可降低幻覺風險。AI 結果仍需人工確認、數據需核對來源。
@@ -247,7 +248,6 @@
           <div class="sub-section" id="sub-rule">
             <div class="sub-title" style="color:#2563eb;">【定】定標準 — 產出草稿</div>
             
-            <!-- 修正：加入黃色提醒框的三要素 -->
             <div class="alert-warning">
               <strong>定標準的三個關鍵要素：</strong>
               <ul>
@@ -283,7 +283,6 @@
 - 每點不超過30字
 - 禁止捏造具體數據(預算/業績僅寫「待填入」)</pre>
             </div>
-            <!-- 修正：補上箭頭說明 -->
             <p class="note-text">➔ 適合：還沒想好怎麼分章節，想先看看 AI 怎麼安排，再決定要不要調整</p>
 
             <div class="prompt-box">
@@ -297,7 +296,6 @@
 - 請你先提出2~3種可能的「內容架構」安排方式（列出章節標題即可）
 - 簡短說明每種架構的適用情境，等我選定方向後再開始產出文案。</pre>
             </div>
-            <!-- 修正：補上箭頭說明 -->
             <p class="note-text">➔ 適合：想要參與架構決策，但不想自己從零開始想，讓 AI 先給選項</p>
           </div>
 
@@ -305,7 +303,6 @@
           <div class="sub-section" id="sub-bone">
             <div class="sub-title" style="color:#2563eb;">【骨】長骨架 — 邏輯骨架校準</div>
             
-            <!-- 修正：補上「管住AI三招」表格 -->
             <div class="title-icon">▶️ 管住 AI 三招</div>
             <table class="styled-table">
               <thead><tr><th>招式</th><th>指令關鍵字</th><th>說明</th></tr></thead>
@@ -316,7 +313,6 @@
               </tbody>
             </table>
 
-            <!-- 修正：補上「簡報時間與張數參考」 -->
             <div class="title-icon">▶️ 簡報時間與張數參考</div>
             <ul style="font-size: 0.95rem; color: #475569; margin-left: 28px; margin-bottom: 24px;">
               <li style="margin-bottom: 6px;">通常 1 分鐘對應 1~1.5 張投影片 （一般節奏）</li>
@@ -346,7 +342,6 @@
                 <span class="prompt-label">📌 版本二：完整版（對應視覺規格）</span>
                 <button class="copy-btn" onclick="copyPrompt('p6', this)">複製</button>
               </div>
-<!-- 修正：1:1 還原圖片中參、視覺規格的排版 -->
 <pre class="prompt-content" id="p6"># 任務進度：【簡報大綱校準階段】
 
 ## 銜接背景與角色設定
@@ -419,64 +414,134 @@
           </div>
         </div>
 
-        <!-- 單元 2 -->
+        <!-- 單元 2：NotebookLM 完整擴充版 -->
         <div class="content-card" id="unit2" style="margin-bottom: 24px;">
           <div class="section-header">
             <div class="section-num badge-2">2</div>
-            <div class="section-title">NotebookLM 應用</div>
+            <div class="section-title">NotebookLM 文件智慧整合應用</div>
           </div>
-          <div class="theme-tag" style="background:#ccfbf1; color:#0f766e;">📌 知識庫建立與來源交叉比對</div>
+          <div class="theme-tag" style="background:#ccfbf1; color:#0f766e;">📌 練習主題：跨文件知識庫建立與公部門標案分析</div>
 
+          <!-- 功能介紹 -->
           <div class="sub-section" id="nb-intro" style="border-top:none; margin-top:0;">
             <div class="sub-title" style="color:#0d9488;">功能介紹</div>
-            <p style="font-size: 0.9rem; color: #475569;">NotebookLM 是以「您上傳的資料來源」為唯一真理的 AI 筆記系統，能精準引用來源，不會胡亂生成外部資訊。</p>
+            <p style="font-size: 0.9rem; color: #475569;">NotebookLM 是以「您上傳的資料來源」為唯一真理的 AI 筆記系統，能精準引用來源，不會胡亂生成外部資訊。非常適合用於研讀法規、合約、招標文件與長篇報告。</p>
           </div>
 
+          <!-- 參考來源上傳 -->
           <div class="sub-section" id="nb-upload">
-            <div class="sub-title" style="color:#0d9488;">參考來源上傳心法</div>
-            <div class="alert-box" style="background:#f0fdfa; border-color:#0d9488; color:#115e59;">
-              💡 <strong>上傳建議</strong>：支援 PDF、Google 文件、Google 簡報、複製文字、網址或 YouTube 影片連結。單一筆記本建議來源控制在 5~10 個核心檔案以內，精準度最高。
-            </div>
+            <div class="sub-title" style="color:#0d9488;">參考來源上傳與限制</div>
+            
+            <table class="styled-table">
+              <thead><tr><th>來源類型</th><th>說明</th></tr></thead>
+              <tbody>
+                <tr><td><strong>文字文件</strong></td><td>支援 PDF、TXT、Markdown 檔案上傳。</td></tr>
+                <tr><td><strong>Google 雲端硬碟</strong></td><td>支援 Google 文件 (Docs)、Google 簡報 (Slides)，且支援自動同步更新。</td></tr>
+                <tr><td><strong>網頁與影音</strong></td><td>直接貼上網址 (URL) 擷取文字，或貼上 YouTube 連結自動分析逐字稿。</td></tr>
+              </tbody>
+            </table>
+
+            <table class="styled-table">
+              <thead><tr><th>限制與建議</th><th>說明</th></tr></thead>
+              <tbody>
+                <tr><td><strong>來源數量</strong></td><td>單一筆記本最多支援上傳 <strong>50 個</strong> 獨立來源。</td></tr>
+                <tr><td><strong>字數限制</strong></td><td>每個來源文件最多 <strong>500,000 字</strong>。</td></tr>
+                <tr><td><strong>上傳建議</strong></td><td>聚焦單一主題（例如：單一專案、單一招標案），避免混入無關雜訊。</td></tr>
+              </tbody>
+            </table>
           </div>
 
+          <!-- 對話練習 -->
           <div class="sub-section" id="nb-chat">
-            <div class="sub-title" style="color:#0d9488;">對話練習</div>
+            <div class="sub-title" style="color:#0d9488;">對話練習與提問技巧</div>
+            <div class="alert-success">
+              💡 <strong>提問技巧</strong>：您可以直接指定來源（如「請根據來源 1 和 3...」），要求輸出格式（「請用表格比較...」），或要求附註引文位置。
+            </div>
+
             <div class="prompt-box">
               <div class="prompt-header">
-                <span class="prompt-label">📌 跨文件比對與觀點提煉</span>
+                <span class="prompt-label">📌 P10：跨文件精準摘要與共識提煉</span>
                 <button class="copy-btn" onclick="copyPrompt('p10', this)">複製</button>
               </div>
-              <pre class="prompt-content" id="p10">請依據我所提供的所有來源資料，回答以下問題：
-1. 請整理出這些資料中對於【主題/業務】的共同共識是什麼？
-2. 不同的來源之間是否存在矛盾或相異的觀點？請以表格對比列出。
-3. 請嚴格僅依據上傳來源回答，切勿加入外部未提及的推論，並在每點後附上引文依據。</pre>
+              <pre class="prompt-content" id="p10">請根據所有上傳的參考來源，為我整理出關於【本專案/議題】的 3 個核心共識與重點。
+要求：
+1. 請嚴格僅依據上傳來源回答，切勿加入外部未提及的推論。
+2. 針對每項重點，請在句末附上來源引文的段落或頁數作為依據。</pre>
             </div>
-          </div>
 
-          <div class="sub-section" id="nb-export">
-            <div class="sub-title" style="color:#0d9488;">匯出成品</div>
             <div class="prompt-box">
               <div class="prompt-header">
-                <span class="prompt-label">📌 結構化學習指南／FAQ 筆記匯出</span>
+                <span class="prompt-label">📌 P11：專案需求書與規格交叉比對（尋找矛盾）</span>
                 <button class="copy-btn" onclick="copyPrompt('p11', this)">複製</button>
               </div>
-              <pre class="prompt-content" id="p11">請將目前筆記本中的核心知識整理為一份【新人學習指南】：
-- 包含：核心概念定義、標準作業流程(SOP)、常見問題 FAQ（至少 5 題）
-- 格式要求：清晰的 Markdown 標題層級與條列清單，適合直接匯出成 Google 文件保存。</pre>
+              <pre class="prompt-content" id="p11">請比對上傳的【內政部1996熱線客服系統擴充專案】需求說明書與【廠商建議書】。
+任務：
+1. 找出兩份文件之間是否有規格不符、矛盾或尚未釐清的盲點。
+2. 請用「表格」呈現比對結果，包含欄位：需求項目、甲方規格要求、乙方建議做法、潛在落差分析。</pre>
+            </div>
+
+            <div class="prompt-box">
+              <div class="prompt-header">
+                <span class="prompt-label">📌 P12：轉換語氣與受眾溝通</span>
+                <button class="copy-btn" onclick="copyPrompt('p12', this)">複製</button>
+              </div>
+              <pre class="prompt-content" id="p12">請將資料庫中關於【PBX 總機系統與數位憑證架構】這段充滿專業技術術語的內容，
+轉換為「非技術背景的高階長官」能夠輕鬆聽懂的白話文說明。
+限制：字數請控制在 300 字以內，並多使用生活化的比喻。</pre>
             </div>
           </div>
 
-          <div class="sub-section" id="nb-survey">
-            <div class="sub-title" style="color:#0d9488;">問卷調查練習</div>
+          <!-- 匯出成品 -->
+          <div class="sub-section" id="nb-export">
+            <div class="sub-title" style="color:#0d9488;">筆記與成品匯出</div>
+
             <div class="prompt-box">
               <div class="prompt-header">
-                <span class="prompt-label">📌 問卷反饋深度洞察</span>
-                <button class="copy-btn" onclick="copyPrompt('p12', this)">複製</button>
+                <span class="prompt-label">📌 P13：結構化學習指南與 FAQ 匯出</span>
+                <button class="copy-btn" onclick="copyPrompt('p13', this)">複製</button>
               </div>
-              <pre class="prompt-content" id="p12">這是一份問卷開放式填答的回饋資料。請幫我完成以下質性分析：
-1. 找出受訪者滿意度最高的 3 個核心亮點。
-2. 歸納出最常被抱怨或期望改善的 3 大痛點。
-3. 針對改善痛點，提出 3 個立即可執行的優化建議措施。</pre>
+              <pre class="prompt-content" id="p13">請將目前筆記本中的核心知識，整理為一份給內部同仁參考的【新人教育訓練手冊】：
+- 包含：1. 核心專有名詞解釋 2. 標準作業流程(SOP) 3. 常見問題 FAQ（至少 5 題）
+- 格式要求：清晰的 Markdown 標題層級與條列清單，適合直接匯出成 Google 文件保存。</pre>
+            </div>
+
+            <div class="prompt-box">
+              <div class="prompt-header">
+                <span class="prompt-label">📌 P14：會議逐字稿轉化為待辦清單</span>
+                <button class="copy-btn" onclick="copyPrompt('p14', this)">複製</button>
+              </div>
+              <pre class="prompt-content" id="p14">請根據上傳的專案會議逐字稿與紀錄，精粹出以下三項資訊：
+1. 本次會議的 3 項核心決議事項。
+2. 接下來的待辦清單 (Action Items)，請以表格列出「任務名稱、負責人、預計完成期限」。
+3. 下次會議需要持續追蹤的重點項目。</pre>
+            </div>
+
+            <div class="prompt-box">
+              <div class="prompt-header">
+                <span class="prompt-label">📌 P15：模擬提問與面試防禦機制</span>
+                <button class="copy-btn" onclick="copyPrompt('p15', this)">複製</button>
+              </div>
+              <pre class="prompt-content" id="p15">請扮演嚴格的公部門評審委員，根據我上傳的【專案簡報與提案計畫書】，
+對我提出 5 個最犀利、最可能被挑戰的問題（例如預算分配、執行時程風險等），
+並針對每個問題，依照來源資料提供一份「建議防禦回答策略」。</pre>
+            </div>
+          </div>
+
+          <!-- 音訊導覽 -->
+          <div class="sub-section" id="nb-audio">
+            <div class="sub-title" style="color:#0d9488;">音訊導覽 (Audio Overview)</div>
+            <p class="note-text" style="margin-bottom: 12px;">一鍵生成雙人對話式 Podcast，幫助您在通勤或零碎時間快速消化長篇冰冷法規與文件。</p>
+
+            <div class="prompt-box">
+              <div class="prompt-header">
+                <span class="prompt-label">📌 P16：產出客製化 Podcast 腳本</span>
+                <button class="copy-btn" onclick="copyPrompt('p16', this)">複製</button>
+              </div>
+              <pre class="prompt-content" id="p16">請將這些上傳的規章資料，轉換為一段 3 分鐘長度的雙人對談 Podcast 腳本。
+角色設定：
+- 主持人 A：充滿好奇心，代表完全不懂的新手，負責提問。
+- 專家 B：語氣沉穩專業，擅長用簡單的例子解釋複雜的流程。
+請直接輸出對話逐字稿，並標註音效提示（如 [笑聲]、[驚訝]）。</pre>
             </div>
           </div>
         </div>
@@ -499,9 +564,9 @@
             <div class="prompt-box">
               <div class="prompt-header">
                 <span class="prompt-label">📌 Gamma 專用：大綱轉卡片語法</span>
-                <button class="copy-btn" onclick="copyPrompt('p13', this)">複製</button>
+                <button class="copy-btn" onclick="copyPrompt('p17', this)">複製</button>
               </div>
-              <pre class="prompt-content" id="p13">請將以下內容轉換為適合貼入 Gamma 簡報工具的文字大綱格式：
+              <pre class="prompt-content" id="p17">請將以下內容轉換為適合貼入 Gamma 簡報工具的文字大綱格式：
 - 每張投影片請用 `---` 分隔
 - 投影片標題使用 `#` 一級標題
 - 內頁重點使用精簡條列（每點不超過 20 字）
@@ -515,9 +580,9 @@
             <div class="prompt-box">
               <div class="prompt-header">
                 <span class="prompt-label">📌 10頁商務企劃提案骨架</span>
-                <button class="copy-btn" onclick="copyPrompt('p14', this)">複製</button>
+                <button class="copy-btn" onclick="copyPrompt('p18', this)">複製</button>
               </div>
-              <pre class="prompt-content" id="p14">---
+              <pre class="prompt-content" id="p18">---
 # 封面：新創品牌行銷提案
 ### 打造具備社群影響力與商業變現的新世代經營策略
 - 報告人：企劃團隊
@@ -556,7 +621,7 @@
 
           <div class="sub-section" id="canva-tags">
             <div class="sub-title" style="color:#ea580c;">元素搜尋關鍵字</div>
-            <div class="alert-box" style="background:#fff7ed; border-color:#ea580c; color:#9a3412;">
+            <div class="alert-warning" style="background:#fff7ed; border-color:#ea580c; color:#9a3412;">
               🎯 <strong>推薦搜尋關鍵字</strong>：
               <ul style="margin-left: 20px; margin-top: 6px;">
                 <li><strong>Bento grid UI</strong>（現代便當盒幾何網格排版）</li>
@@ -571,9 +636,9 @@
             <div class="prompt-box">
               <div class="prompt-header">
                 <span class="prompt-label">📌 IG 社群海報三段式文案生成</span>
-                <button class="copy-btn" onclick="copyPrompt('p15', this)">複製</button>
+                <button class="copy-btn" onclick="copyPrompt('p19', this)">複製</button>
               </div>
-              <pre class="prompt-content" id="p15">請幫我為一張【IG正方形促銷海報】撰寫吸引人的文案：
+              <pre class="prompt-content" id="p19">請幫我為一張【IG正方形促銷海報】撰寫吸引人的文案：
 - 主題：【例如：春季新品上市 / 限時快閃優惠】
 - 格式要求：
   1. 主標題（吸睛強烈，不超過 10 個字）
