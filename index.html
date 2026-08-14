@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> Jimmy AI 實戰 | 提示詞庫</title>
+  <title>東區認證全方位AI24｜AI 課程 Prompt</title>
   <style>
     :root {
       --primary: #2563eb;
@@ -15,7 +15,7 @@
       --border: #e2e8f0;
       --tag-bg: #eff6ff;
       --tag-text: #1d4ed8;
-      --code-bg: #0f172a;
+      --code-bg: #ffffff;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -24,7 +24,7 @@
 
     /* 頂部導覽列 */
     header { background: #fff; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
-    .header-container { max-width: 1400px; margin: 0 auto; padding: 12px 24px; display: flex; justify-content: space-between; align-items: center; }
+    .header-container { max-width: 1440px; margin: 0 auto; padding: 12px 24px; display: flex; justify-content: space-between; align-items: center; }
     .brand { display: flex; align-items: center; gap: 12px; }
     .brand-logo { width: 36px; height: 36px; background: var(--primary); color: white; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2rem; }
     .brand-text h1 { font-size: 1.05rem; font-weight: 700; color: #0f172a; }
@@ -36,29 +36,35 @@
     .tab-btn:hover:not(.active) { background: #e2e8f0; }
 
     /* 三欄佈局 */
-    .main-layout { max-width: 1400px; margin: 24px auto; padding: 0 24px; display: grid; grid-template-columns: 240px 1fr 220px; gap: 24px; align-items: start; }
+    .main-layout { max-width: 1440px; margin: 24px auto; padding: 0 24px; display: grid; grid-template-columns: 260px 1fr 220px; gap: 24px; align-items: start; }
 
-    /* 左側與右側邊欄 */
-    .sidebar-left, .sidebar-right { background: var(--card-bg); border-radius: 10px; border: 1px solid var(--border); padding: 16px; position: sticky; top: 80px; }
+    /* 側邊欄 */
+    .sidebar-left, .sidebar-right { background: var(--card-bg); border-radius: 10px; border: 1px solid var(--border); padding: 16px; position: sticky; top: 80px; max-height: calc(100vh - 100px); overflow-y: auto; }
     .menu-title { font-size: 0.85rem; font-weight: 700; color: var(--text-muted); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.05em; }
     .menu-list { list-style: none; }
-    .menu-item { margin-bottom: 8px; }
-    .menu-link { display: flex; align-items: center; gap: 8px; padding: 8px 10px; border-radius: 6px; text-decoration: none; color: #334155; font-size: 0.9rem; font-weight: 600; }
-    .menu-link.active { background: #eff6ff; color: var(--primary); }
-    .menu-badge { background: var(--primary); color: white; border-radius: 50%; width: 20px; height: 20px; display: inline-flex; align-items: center; justify-content: center; font-size: 0.75rem; }
-    .sub-menu { list-style: none; margin-left: 20px; margin-top: 4px; border-left: 2px solid #e2e8f0; padding-left: 10px; }
-    .sub-menu a { display: block; padding: 5px 0; font-size: 0.85rem; color: #64748b; text-decoration: none; transition: 0.15s; }
-    .sub-menu a:hover { color: var(--primary); font-weight: 500; }
+    .menu-item { margin-bottom: 12px; }
+    .menu-link { display: flex; align-items: center; gap: 8px; padding: 8px 10px; border-radius: 6px; text-decoration: none; color: #334155; font-size: 0.95rem; font-weight: 700; }
+    .menu-link:hover { background: #f1f5f9; color: var(--primary); }
+    
+    .badge-1 { background: #2563eb; }
+    .badge-2 { background: #0d9488; }
+    .badge-3 { background: #7c3aed; }
+    .badge-4 { background: #ea580c; }
+    .menu-badge { color: white; border-radius: 50%; width: 22px; height: 22px; display: inline-flex; align-items: center; justify-content: center; font-size: 0.75rem; flex-shrink: 0; }
+    
+    .sub-menu { list-style: none; margin-left: 18px; margin-top: 4px; border-left: 2px solid #e2e8f0; padding-left: 10px; }
+    .sub-menu a { display: block; padding: 4px 0; font-size: 0.85rem; color: #64748b; text-decoration: none; transition: 0.15s; }
+    .sub-menu a:hover { color: var(--primary); font-weight: 600; padding-left: 4px; }
 
-    /* 中間內容區塊 */
-    .content-area { display: flex; flex-direction: column; gap: 24px; }
+    /* 內容區塊 */
+    .content-area { display: flex; flex-direction: column; gap: 32px; }
     .content-card { background: var(--card-bg); border-radius: 10px; border: 1px solid var(--border); padding: 28px; }
     .section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; border-bottom: 2px solid #f1f5f9; padding-bottom: 12px; }
-    .section-num { background: var(--primary); color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1rem; }
-    .section-title { font-size: 1.3rem; font-weight: 700; color: #0f172a; }
-    .theme-tag { display: inline-block; background: var(--tag-bg); color: var(--tag-text); font-size: 0.85rem; padding: 5px 12px; border-radius: 6px; font-weight: 600; margin-bottom: 20px; }
+    .section-num { color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1rem; flex-shrink: 0; }
+    .section-title { font-size: 1.35rem; font-weight: 700; color: #0f172a; }
+    .theme-tag { display: inline-block; background: var(--tag-bg); color: var(--tag-text); font-size: 0.85rem; padding: 5px 12px; border-radius: 6px; font-weight: 600; margin-bottom: 16px; }
 
-    /* 表格設計 */
+    /* 表格 */
     .styled-table { width: 100%; border-collapse: collapse; margin: 12px 0 20px; font-size: 0.9rem; }
     .styled-table th { background: #f8fafc; color: #475569; font-weight: 600; text-align: left; padding: 10px 14px; border: 1px solid var(--border); }
     .styled-table td { padding: 10px 14px; border: 1px solid var(--border); color: #334155; }
@@ -72,8 +78,8 @@
     .copy-btn:hover { background: #e2e8f0; }
     .prompt-content { padding: 14px; margin: 0; font-family: Consolas, Monaco, "Courier New", monospace; font-size: 0.875rem; white-space: pre-wrap; word-break: break-word; color: #1e293b; line-height: 1.5; background: #ffffff; }
 
-    .sub-section { margin-top: 32px; padding-top: 20px; border-top: 1px dashed #e2e8f0; }
-    .sub-title { font-size: 1.1rem; font-weight: 700; color: var(--primary); margin-bottom: 10px; }
+    .sub-section { margin-top: 28px; padding-top: 20px; border-top: 1px dashed #e2e8f0; }
+    .sub-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 10px; }
     .alert-box { background: #eff6ff; border-left: 4px solid var(--primary); padding: 12px 16px; border-radius: 0 6px 6px 0; font-size: 0.875rem; margin: 10px 0 16px; color: #1e40af; }
     .note-text { font-size: 0.85rem; color: #64748b; margin-top: -10px; margin-bottom: 16px; }
 
@@ -95,14 +101,15 @@
       <div class="brand">
         <div class="brand-logo">AI</div>
         <div class="brand-text">
-          <h1>Jimmy全方位｜AI 課程 Prompt</h1>
-          <p>Prompt 提示詞庫</p>
+          <h1>東區認證全方位AI24｜AI 課程 Prompt</h1>
+          <p>心怡｜zoego99@gmail.com</p>
         </div>
       </div>
       <nav class="nav-tabs">
         <a href="#unit1" class="tab-btn active">咖啡館 / 寵物</a>
         <a href="#" class="tab-btn">北海道旅遊</a>
         <a href="#" class="tab-btn">AI影音廣告</a>
+        <a href="#" class="tab-btn">Line貼圖 ↗</a>
       </nav>
     </div>
   </header>
@@ -114,31 +121,61 @@
     <aside class="sidebar-left">
       <div class="menu-title">課程單元</div>
       <ul class="menu-list">
+        
+        <!-- 單元 1 -->
         <li class="menu-item">
-          <a href="#unit1" class="menu-link active">
-            <span class="menu-badge">1</span> AI 協作四步驟
-          </a>
+          <a href="#unit1" class="menu-link"><span class="menu-badge badge-1">1</span> AI 協作四步驟</a>
           <ul class="sub-menu">
-            <li><a href="#sub-ask">【問】釐清思路</a></li>
-            <li><a href="#sub-rule">【定】產出草稿</a></li>
-            <li><a href="#sub-bone">【骨】邏輯骨架校準</a></li>
-            <li><a href="#sub-prod">【生】產出簡報與結果</a></li>
-            <li><a href="#sub-faq">常見 AI 詢問技巧</a></li>
+            <li><a href="#sub-ask">› 【問】釐清思路</a></li>
+            <li><a href="#sub-rule">› 【定】產出草稿</a></li>
+            <li><a href="#sub-bone">› 【骨】邏輯骨架校準</a></li>
+            <li><a href="#sub-prod">› 【生】產出簡報</a></li>
+            <li><a href="#sub-faq">› 常見 AI 詢問</a></li>
           </ul>
         </li>
+
+        <!-- 單元 2 -->
         <li class="menu-item">
-          <a href="#unit2" class="menu-link"><span class="menu-badge" style="background:#64748b;">2</span> NotebookLM 應用</a>
+          <a href="#unit2" class="menu-link"><span class="menu-badge badge-2">2</span> NotebookLM 應用</a>
+          <ul class="sub-menu">
+            <li><a href="#nb-intro">› 功能介紹</a></li>
+            <li><a href="#nb-upload">› 參考來源上傳</a></li>
+            <li><a href="#nb-chat">› 對話練習</a></li>
+            <li><a href="#nb-export">› 匯出成品</a></li>
+            <li><a href="#nb-survey">› 問卷調查練習</a></li>
+          </ul>
         </li>
+
+        <!-- 單元 3 -->
+        <li class="menu-item">
+          <a href="#unit3" class="menu-link"><span class="menu-badge badge-3">3</span> Gamma 簡報製作</a>
+          <ul class="sub-menu">
+            <li><a href="#gamma-import">› 匯入大綱生成簡報</a></li>
+            <li><a href="#gamma-prompt">› 簡報 Prompt 範本</a></li>
+            <li><a href="#gamma-template">› 課程統一 範本</a></li>
+          </ul>
+        </li>
+
+        <!-- 單元 4 -->
+        <li class="menu-item">
+          <a href="#unit4" class="menu-link"><span class="menu-badge badge-4">4</span> Canva 海報與社群</a>
+          <ul class="sub-menu">
+            <li><a href="#canva-keys">› 快速鍵</a></li>
+            <li><a href="#canva-tags">› 元素搜尋關鍵字</a></li>
+            <li><a href="#canva-copy">› AI 文案生成</a></li>
+          </ul>
+        </li>
+
       </ul>
     </aside>
 
     <!-- 中間內容區 -->
     <main class="content-area">
 
-      <!-- 第一單元主卡片 -->
+      <!-- ==================== 單元 1 ==================== -->
       <div class="content-card" id="unit1">
         <div class="section-header">
-          <div class="section-num">1</div>
+          <div class="section-num badge-1">1</div>
           <div class="section-title">AI 協作四步驟</div>
         </div>
         <div class="theme-tag">📌 練習主題：咖啡館開店行銷企劃</div>
@@ -155,22 +192,21 @@
 
         <h3 style="font-size: 1rem;">AI 協作四步驟（問定骨生）</h3>
         <table class="styled-table">
-          <thead><tr><th>步驟</th><th>口訣</th><th>白話好記</th><th>核心動作</th></tr></thead>
+          <thead><tr><th>步驟</th><th>口訣</th><th>核心動作</th></tr></thead>
           <tbody>
-            <tr><td>步驟一</td><td><strong>【問】</strong>AI 問 AI</td><td>釐清盲點</td><td>讓 AI 當顧問反問，把專家盲點和受眾看不懂的鴻溝問出來</td></tr>
-            <tr><td>步驟二</td><td><strong>【定】</strong>定標準</td><td>嚴查規矩</td><td>用 MD 結構化＋Code Block，把正確的知識文件定死，不讓 AI 瞎編</td></tr>
-            <tr><td>步驟三</td><td><strong>【骨】</strong>長骨架</td><td>排版卡位</td><td>管住 AI 過度積極，只長邏輯骨架大綱、不寫廢話內文</td></tr>
-            <tr><td>步驟四</td><td><strong>【生】</strong>生結果</td><td>適性生產</td><td>反向查證後，選對工具，生出可用的最終成品</td></tr>
+            <tr><td>步驟一</td><td><strong>【問】</strong>AI 問 AI</td><td>讓 AI 當顧問反問，釐清專家盲點與受眾需求</td></tr>
+            <tr><td>步驟二</td><td><strong>【定】</strong>定標準</td><td>用 MD 結構化＋Code Block，定死知識文件規範</td></tr>
+            <tr><td>步驟三</td><td><strong>【骨】</strong>長骨架</td><td>管住 AI 過度積極，只產出邏輯骨架與大綱</td></tr>
+            <tr><td>步驟四</td><td><strong>【生】</strong>生結果</td><td>反向查證後，選對工具生出可用的最終成品</td></tr>
           </tbody>
         </table>
 
-        <!-- 子單元 1：問 -->
+        <!-- 子章節：問 -->
         <div class="sub-section" id="sub-ask">
-          <div class="sub-title">【問】AI 問 AI — 釐清思路（GPS：G目標＋P背景）</div>
+          <div class="sub-title" style="color:#2563eb;">【問】AI 問 AI — 釐清思路（GPS：G目標＋P背景）</div>
           <div class="alert-box">
-            <strong>AI 幻覺預防</strong>：AI 產生看似合理但未經查證的內容。先讓 AI 反向提問釐清需求，確保在「已知約束條件」下產出。
+            <strong>AI 幻覺</strong>：AI 產生看似合理但未經查證的內容。先讓 AI 反向提問釐清需求，確保在「已知約束條件」下產出。
           </div>
-
           <div class="prompt-box">
             <div class="prompt-header">
               <span class="prompt-label">📌 S1：Prompt — 釐清思路</span>
@@ -197,16 +233,11 @@
 
 輸出時請放入 Markdown 程式碼區塊，方便我直接複製存檔。</pre>
           </div>
-          <p class="note-text">➜ 目的：用於討論結束後整理結論，方便日後開新對話直接帶入背景接續進度。</p>
         </div>
 
-        <!-- 子單元 2：定 -->
+        <!-- 子章節：定 -->
         <div class="sub-section" id="sub-rule">
-          <div class="sub-title">【定】定標準 — 產出草稿</div>
-          <div class="alert-box">
-            <strong>定標準的三個關鍵要素</strong>：① 角色設定（決定語氣） ② 格式鎖定（指定結構） ③ 邊界聲明（禁止捏造數據）。
-          </div>
-
+          <div class="sub-title" style="color:#2563eb;">【定】定標準 — 產出草稿</div>
           <div class="prompt-box">
             <div class="prompt-header">
               <span class="prompt-label">📌 情境1：完全交給 AI 決定架構</span>
@@ -233,7 +264,6 @@
 - 每點不超過30字
 - 禁止捏造具體數據(預算/業績僅寫「待填入」)</pre>
           </div>
-          <p class="note-text">➜ 適合：還沒想好怎麼分章節，想先看看 AI 怎麼安排，再決定要不要調整。</p>
 
           <div class="prompt-box">
             <div class="prompt-header">
@@ -246,17 +276,14 @@
 - 請你先提出2~3種可能的「內容架構」安排方式（列出章節標題即可）
 - 簡短說明每種架構的適用情境，等我選定方向後再開始產出文案。</pre>
           </div>
-          <p class="note-text">➜ 適合：想要參與架構決策，讓 AI 先給選項。</p>
         </div>
 
-        <!-- 子單元 3：骨 -->
+        <!-- 子章節：骨 -->
         <div class="sub-section" id="sub-bone">
-          <div class="sub-title">【骨】長骨架 — 邏輯骨架校準</div>
-          <p style="font-size:0.9rem; margin-bottom:10px;"><strong>管住 AI 三招：</strong> ① 宣告禁令（禁止填充內文） ② 指定格式（以 Markdown 輸出） ③ 等待確認（輸出大綱後停止）。</p>
-
+          <div class="sub-title" style="color:#2563eb;">【骨】長骨架 — 邏輯骨架校準</div>
           <div class="prompt-box">
             <div class="prompt-header">
-              <span class="prompt-label">📌 版本一：簡單版（適合一般簡報情境）</span>
+              <span class="prompt-label">📌 版本一：簡單版（適合一般情形）</span>
               <button class="copy-btn" onclick="copyPrompt('p5', this)">複製</button>
             </div>
             <pre class="prompt-content" id="p5">現在進入【邏輯骨架校準階段】。
@@ -306,14 +333,9 @@
           </div>
         </div>
 
-        <!-- 子單元 4：生 -->
+        <!-- 子章節：生 -->
         <div class="sub-section" id="sub-prod">
-          <div class="sub-title">【生】生結果 — 產出簡報與最終成果</div>
-          <div class="alert-box">
-            <strong>反向查證（紅隊測試）</strong>：請 AI 扮演「主管／審查單位」挑毛病。<br>
-            <em>例：請扮演嚴格的投資加盟顧問，針對這份開店行銷企劃提出 3 個需要改善的問題。</em>
-          </div>
-
+          <div class="sub-title" style="color:#2563eb;">【生】生結果 — 產出簡報</div>
           <div class="prompt-box">
             <div class="prompt-header">
               <span class="prompt-label">📌 簡報型 Prompt</span>
@@ -329,7 +351,7 @@
 
           <div class="prompt-box">
             <div class="prompt-header">
-              <span class="prompt-label">📌 程式碼型 HTML 簡報 Prompt</span>
+              <span class="prompt-label">📌 程式碼型 Prompt</span>
               <button class="copy-btn" onclick="copyPrompt('p8', this)">複製</button>
             </div>
             <pre class="prompt-content" id="p8">邏輯大綱已確認。
@@ -341,13 +363,12 @@
           </div>
         </div>
 
-        <!-- 子單元 5：常見 AI 問答技巧 -->
+        <!-- 子章節：常見 AI 詢問 -->
         <div class="sub-section" id="sub-faq">
-          <div class="sub-title">常見 AI 詢問技巧</div>
-
+          <div class="sub-title" style="color:#2563eb;">常見 AI 詢問</div>
           <div class="prompt-box">
             <div class="prompt-header">
-              <span class="prompt-label">📌 Q1：如何參考過去公文/文件（照貓畫虎）</span>
+              <span class="prompt-label">📌 Q1：如何參考過去文件（照貓畫虎）</span>
               <button class="copy-btn" onclick="copyPrompt('p9', this)">複製</button>
             </div>
             <pre class="prompt-content" id="p9"># 角色與任務
@@ -369,13 +390,198 @@
 
       </div>
 
-      <!-- 第二單元預留卡片 -->
+      <!-- ==================== 單元 2 ==================== -->
       <div class="content-card" id="unit2">
         <div class="section-header">
-          <div class="section-num" style="background:#64748b;">2</div>
+          <div class="section-num badge-2">2</div>
           <div class="section-title">NotebookLM 應用</div>
         </div>
-        <p style="color: #64748b;">（後續可依相同方式增加 NotebookLM 的操作提示詞與來源整合心法）</p>
+        <div class="theme-tag" style="background:#ccfbf1; color:#0f766e;">📌 知識庫建立與來源交叉比對</div>
+
+        <!-- 子章節：功能介紹 -->
+        <div class="sub-section" id="nb-intro" style="border-top:none; margin-top:0;">
+          <div class="sub-title" style="color:#0d9488;">功能介紹</div>
+          <p style="font-size: 0.9rem; color: #475569;">NotebookLM 是以「您上傳的資料來源」為唯一真理的 AI 筆記系統，能精準引用來源，不會胡亂生成外部資訊。</p>
+          <table class="styled-table">
+            <thead><tr><th>功能特點</th><th>適用情境</th><th>優勢</th></tr></thead>
+            <tbody>
+              <tr><td><strong>來源嚴格錨定</strong></td><td>研讀法規、合約、長篇報告</td><td>每句回答皆附帶可點擊的原文章節引述標註</td></tr>
+              <tr><td><strong>跨文件整合</strong></td><td>彙整多份會議紀錄或競品分析</td><td>快速對比不同檔案間的差異與共識</td></tr>
+              <tr><td><strong>語音導覽 (Audio Overview)</strong></td><td>長篇文件快速消化</td><td>一鍵生成雙人對話式 Podcast 快速理解核心</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 子章節：參考來源上傳 -->
+        <div class="sub-section" id="nb-upload">
+          <div class="sub-title" style="color:#0d9488;">參考來源上傳心法</div>
+          <div class="alert-box" style="background:#f0fdfa; border-color:#0d9488; color:#115e59;">
+            💡 <strong>上傳建議</strong>：支援 PDF、Google 文件、Google 簡報、複製文字、網址或 YouTube 影片連結。單一筆記本建議來源控制在 5~10 個核心檔案以內，精準度最高。
+          </div>
+        </div>
+
+        <!-- 子章節：對話練習 -->
+        <div class="sub-section" id="nb-chat">
+          <div class="sub-title" style="color:#0d9488;">對話練習</div>
+          <div class="prompt-box">
+            <div class="prompt-header">
+              <span class="prompt-label">📌 跨文件比對與觀點提煉</span>
+              <button class="copy-btn" onclick="copyPrompt('p10', this)">複製</button>
+            </div>
+            <pre class="prompt-content" id="p10">請依據我所提供的所有來源資料，回答以下問題：
+1. 請整理出這些資料中對於【主題/業務】的共同共識是什麼？
+2. 不同的來源之間是否存在矛盾或相異的觀點？請以表格對比列出。
+3. 請嚴格僅依據上傳來源回答，切勿加入外部未提及的推論，並在每點後附上引文依據。</pre>
+          </div>
+        </div>
+
+        <!-- 子章節：匯出成品 -->
+        <div class="sub-section" id="nb-export">
+          <div class="sub-title" style="color:#0d9488;">匯出成品</div>
+          <div class="prompt-box">
+            <div class="prompt-header">
+              <span class="prompt-label">📌 結構化學習指南／FAQ 筆記匯出</span>
+              <button class="copy-btn" onclick="copyPrompt('p11', this)">複製</button>
+            </div>
+            <pre class="prompt-content" id="p11">請將目前筆記本中的核心知識整理為一份【新人學習指南】：
+- 包含：核心概念定義、標準作業流程(SOP)、常見問題 FAQ（至少 5 題）
+- 格式要求：清晰的 Markdown 標題層級與條列清單，適合直接匯出成 Google 文件保存。</pre>
+          </div>
+        </div>
+
+        <!-- 子章節：問卷調查練習 -->
+        <div class="sub-section" id="nb-survey">
+          <div class="sub-title" style="color:#0d9488;">問卷調查練習</div>
+          <div class="prompt-box">
+            <div class="prompt-header">
+              <span class="prompt-label">📌 問卷反饋深度洞察</span>
+              <button class="copy-btn" onclick="copyPrompt('p12', this)">複製</button>
+            </div>
+            <pre class="prompt-content" id="p12">這是一份問卷開放式填答的回饋資料。請幫我完成以下質性分析：
+1. 找出受訪者滿意度最高的 3 個核心亮點。
+2. 歸納出最常被抱怨或期望改善的 3 大痛點。
+3. 針對改善痛點，提出 3 個立即可執行的優化建議措施。</pre>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ==================== 單元 3 ==================== -->
+      <div class="content-card" id="unit3">
+        <div class="section-header">
+          <div class="section-num badge-3">3</div>
+          <div class="section-title">Gamma 簡報製作</div>
+        </div>
+        <div class="theme-tag" style="background:#f3e8ff; color:#6b21a8;">📌 AI 快速排版生成高質感投影片</div>
+
+        <!-- 子章節：匯入大綱生成簡報 -->
+        <div class="sub-section" id="gamma-import" style="border-top:none; margin-top:0;">
+          <div class="sub-title" style="color:#7c3aed;">匯入大綱生成簡報</div>
+          <p style="font-size: 0.9rem; color: #475569;">將先前提煉好的 Markdown 邏輯骨架，直接貼入 Gamma 的「文字貼上 (Paste in text)」模式，即可自動排版生成投影片。</p>
+        </div>
+
+        <!-- 子章節：簡報 Prompt 範本 -->
+        <div class="sub-section" id="gamma-prompt">
+          <div class="sub-title" style="color:#7c3aed;">簡報 Prompt 範本</div>
+          <div class="prompt-box">
+            <div class="prompt-header">
+              <span class="prompt-label">📌 Gamma 專用：大綱轉卡片語法</span>
+              <button class="copy-btn" onclick="copyPrompt('p13', this)">複製</button>
+            </div>
+            <pre class="prompt-content" id="p13">請將以下內容轉換為適合貼入 Gamma 簡報工具的文字大綱格式：
+- 每張投影片請用 `---` 分隔
+- 投影片標題使用 `#` 一級標題
+- 內頁重點使用精簡條列（每點不超過 20 字）
+- 自動加入合適的 emoji 圖示以增強視覺感
+- 請保持重點精準、留白充足，避免大段落文字擠在一起</pre>
+          </div>
+        </div>
+
+        <!-- 子章節：課程統一範本 -->
+        <div class="sub-section" id="gamma-template">
+          <div class="sub-title" style="color:#7c3aed;">課程統一 範本</div>
+          <div class="prompt-box">
+            <div class="prompt-header">
+              <span class="prompt-label">📌 10頁商務企劃提案骨架</span>
+              <button class="copy-btn" onclick="copyPrompt('p14', this)">複製</button>
+            </div>
+            <pre class="prompt-content" id="p14">---
+# 封面：新創品牌行銷提案
+### 打造具備社群影響力與商業變現的新世代經營策略
+- 報告人：企劃團隊
+- 日期：2026年
+
+---
+# 一、市場現況與痛點分析
+- 傳統行銷轉換率逐年下降
+- 社群流量獲取成本過高
+- 客群黏著度不足、回購率低
+
+---
+# 二、核心價值與目標定位
+- 建立具備溫度的品牌社群
+- 精準鎖定 25-40 歲注重生活品質的消費群
+- 導入 AI 自動化顧客體驗流程</pre>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ==================== 單元 4 ==================== -->
+      <div class="content-card" id="unit4">
+        <div class="section-header">
+          <div class="section-num badge-4">4</div>
+          <div class="section-title">Canva 海報與社群</div>
+        </div>
+        <div class="theme-tag" style="background:#ffedd5; color:#c2410c;">📌 視覺排版、快捷鍵與社群文案</div>
+
+        <!-- 子章節：快速鍵 -->
+        <div class="sub-section" id="canva-keys" style="border-top:none; margin-top:0;">
+          <div class="sub-title" style="color:#ea580c;">常用魔法快速鍵</div>
+          <table class="styled-table">
+            <thead><tr><th>按鍵</th><th>功能</th><th>說明</th></tr></thead>
+            <tbody>
+              <tr><td><strong>T</strong></td><td>新增文字框</td><td>快速插入純文字</td></tr>
+              <tr><td><strong>R</strong></td><td>新增矩形</td><td>快速建立色塊背景或便當盒外框</td></tr>
+              <tr><td><strong>C</strong></td><td>新增圓形</td><td>快速建立頭像框或裝飾圓</td></tr>
+              <tr><td><strong>L</strong></td><td>新增線條</td><td>快速拉出分隔線</td></tr>
+              <tr><td><strong>/ (斜線)</strong></td><td>魔法選單</td><td>快速搜尋所有元素與排版工具</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 子章節：元素搜尋關鍵字 -->
+        <div class="sub-section" id="canva-tags">
+          <div class="sub-title" style="color:#ea580c;">元素搜尋關鍵字</div>
+          <div class="alert-box" style="background:#fff7ed; border-color:#ea580c; color:#9a3412;">
+            🎯 <strong>推薦搜尋關鍵字（英文精準度更高）</strong>：
+            <ul style="margin-left: 20px; margin-top: 6px;">
+              <li><strong>Bento grid UI</strong>（現代便當盒幾何網格排版）</li>
+              <li><strong>Minimalist geometric</strong>（極簡幾何色塊裝飾）</li>
+              <li><strong>Abstract doodle</strong>（手繪線條塗鴉質感）</li>
+              <li><strong>Gradient blur blob</strong>（柔和漸層光暈背景）</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 子章節：AI 文案生成 -->
+        <div class="sub-section" id="canva-copy">
+          <div class="sub-title" style="color:#ea580c;">AI 文案生成（配合海報排版）</div>
+          <div class="prompt-box">
+            <div class="prompt-header">
+              <span class="prompt-label">📌 IG 社群海報三段式文案生成</span>
+              <button class="copy-btn" onclick="copyPrompt('p15', this)">複製</button>
+            </div>
+            <pre class="prompt-content" id="p15">請幫我為一張【IG正方形促銷海報】撰寫吸引人的文案：
+- 主題：【例如：春季新品上市 / 限時快閃優惠】
+- 格式要求：
+  1. 主標題（吸睛強烈，不超過 10 個字）
+  2. 副標題（說明核心賣點，不超過 20 個字）
+  3. 行動呼籲 CTA（引導點擊或到店，如「限時 3 天・立即預約」）
+- 請提供 3 組不同風格（熱情促銷風、文青質感風、簡約俐落風）供挑選。</pre>
+          </div>
+        </div>
+
       </div>
 
     </main>
@@ -387,8 +593,9 @@
       <a href="https://chatgpt.com" target="_blank" class="tool-btn">ChatGPT ↗</a>
       <a href="https://notebooklm.google.com" target="_blank" class="tool-btn">NotebookLM ↗</a>
 
-      <div class="menu-title" style="margin-top: 20px;">輔助工具</div>
+      <div class="menu-title" style="margin-top: 20px;">簡報與設計</div>
       <a href="https://gamma.app" target="_blank" class="tool-btn">Gamma 簡報 ↗</a>
+      <a href="https://www.canva.com" target="_blank" class="tool-btn">Canva 設計 ↗</a>
     </aside>
 
   </div>
