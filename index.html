@@ -33,13 +33,13 @@
     /* 頂部主題按鈕樣式 */
     .nav-tabs { display: flex; gap: 8px; }
     .tab-btn { padding: 7px 16px; border-radius: 6px; font-size: 0.875rem; color: #475569; background: #f8fafc; border: 1px solid var(--border); cursor: pointer; transition: 0.2s; font-weight: 500; text-decoration: none; }
-    .tab-btn.active { background: var(--primary); color: white; border-color: var(--primary); font-weight: 600; }
+    .tab-btn.active { background: #2b5278; color: white; border-color: #2b5278; font-weight: 600; }
     .tab-btn:hover:not(.active) { background: #e2e8f0; }
 
     /* 三欄佈局 */
     .main-layout { max-width: 1440px; margin: 24px auto; padding: 0 24px; display: grid; grid-template-columns: 260px 1fr 220px; gap: 24px; align-items: start; }
 
-    /* 側邊欄 */
+    /* 側邊欄通用 */
     .sidebar-left, .sidebar-right { background: var(--card-bg); border-radius: 10px; border: 1px solid var(--border); padding: 16px; position: sticky; top: 80px; max-height: calc(100vh - 100px); overflow-y: auto; }
     .menu-title { font-size: 0.85rem; font-weight: 700; color: var(--text-muted); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.05em; }
     .menu-list { list-style: none; }
@@ -47,11 +47,11 @@
     .menu-link { display: flex; align-items: center; gap: 8px; padding: 8px 10px; border-radius: 6px; text-decoration: none; color: #334155; font-size: 0.95rem; font-weight: 700; }
     .menu-link:hover { background: #f1f5f9; color: var(--primary); }
     
-    .badge-1 { background: #2563eb; }
-    .badge-2 { background: #0d9488; }
-    .badge-3 { background: #7c3aed; }
-    .badge-4 { background: #ea580c; }
-    .badge-5 { background: #e11d48; }
+    .badge-blue { background: #2563eb; }
+    .badge-teal { background: #0d9488; }
+    .badge-purple { background: #7c3aed; }
+    .badge-orange { background: #ea580c; }
+    .badge-rose { background: #e11d48; }
     .menu-badge { color: white; border-radius: 50%; width: 22px; height: 22px; display: inline-flex; align-items: center; justify-content: center; font-size: 0.75rem; flex-shrink: 0; }
     
     .sub-menu { list-style: none; margin-left: 18px; margin-top: 4px; border-left: 2px solid #e2e8f0; padding-left: 10px; }
@@ -96,6 +96,7 @@
     /* 右側快捷工具 */
     .tool-btn { display: flex; align-items: center; justify-content: space-between; padding: 9px 12px; border: 1px solid var(--border); border-radius: 6px; margin-bottom: 8px; text-decoration: none; color: #334155; font-size: 0.875rem; font-weight: 500; transition: 0.2s; }
     .tool-btn:hover { border-color: var(--primary); color: var(--primary); background: #f8fafc; }
+    .back-btn { background: #e0e7ff; color: #3730a3; border: 1px solid #c7d2fe; font-weight: 600; justify-content: center; }
 
     @media (max-width: 1024px) {
       .main-layout { grid-template-columns: 1fr; }
@@ -115,10 +116,11 @@
           <p>Jimmy｜Jimmy120865@gmail.com</p>
         </div>
       </div>
+      <!-- 頂部主題按鈕 -->
       <nav class="nav-tabs">
-        <button class="tab-btn active" onclick="switchTheme('theme-coffee', this)">情境練習 / 咖啡館</button>
-        <button class="tab-btn" onclick="switchTheme('theme-video', this)">AI影音廣告</button>
-        <button class="tab-btn" onclick="switchTheme('theme-travel', this)">北海道旅遊</button>
+        <button class="tab-btn active" onclick="switchTheme('coffee', this)">咖啡館 / 寵物</button>
+        <button class="tab-btn" onclick="switchTheme('travel', this)">北海道旅遊</button>
+        <button class="tab-btn" onclick="switchTheme('video', this)">AI影音廣告</button>
         <a href="https://line.me" target="_blank" class="tab-btn">Line貼圖 ↗</a>
       </nav>
     </div>
@@ -127,63 +129,136 @@
   <!-- 主佈局區塊 -->
   <div class="main-layout">
 
-    <!-- 左側選單 -->
+    <!-- ==================== 左側選單欄（動態聯動） ==================== -->
     <aside class="sidebar-left">
-      <div class="menu-title">課程單元快速導覽</div>
-      <ul class="menu-list">
-        <!-- 單元 1 -->
-        <li class="menu-item">
-          <a href="#unit1" class="menu-link"><span class="menu-badge badge-1">1</span> AI 協作四步驟</a>
-          <ul class="sub-menu">
-            <li><a href="#sub-ask">› 【問】釐清思路</a></li>
-            <li><a href="#sub-rule">› 【定】產出草稿</a></li>
-            <li><a href="#sub-bone">› 【骨】邏輯骨架校準</a></li>
-            <li><a href="#sub-prod">› 【生】產出簡報</a></li>
-            <li><a href="#sub-faq">› 常見 AI 詢問</a></li>
-          </ul>
-        </li>
-        <!-- 單元 2 -->
-        <li class="menu-item">
-          <a href="#unit2" class="menu-link"><span class="menu-badge badge-2">2</span> NotebookLM 應用</a>
-          <ul class="sub-menu">
-            <li><a href="#nb-intro">› 功能介紹與限制</a></li>
-            <li><a href="#nb-upload">› 參考來源上傳</a></li>
-            <li><a href="#nb-chat">› 對話與分析練習</a></li>
-            <li><a href="#nb-export">› 筆記與成品匯出</a></li>
-            <li><a href="#nb-survey">› 問卷調查練習</a></li>
-          </ul>
-        </li>
-        <!-- 單元 3 -->
-        <li class="menu-item">
-          <a href="#unit3" class="menu-link"><span class="menu-badge badge-3">3</span> Gamma 簡報製作</a>
-          <ul class="sub-menu">
-            <li><a href="#gamma-import">› 匯入大綱生成簡報</a></li>
-            <li><a href="#gamma-prompt">› 簡報 Prompt 範本</a></li>
-            <li><a href="#gamma-template">› 課程統一範本</a></li>
-          </ul>
-        </li>
-        <!-- 單元 4 -->
-        <li class="menu-item">
-          <a href="#unit4" class="menu-link"><span class="menu-badge badge-4">4</span> Canva 海報與社群</a>
-          <ul class="sub-menu">
-            <li><a href="#canva-keys">› 常用快速鍵</a></li>
-            <li><a href="#canva-tags">› 元素搜尋關鍵字</a></li>
-            <li><a href="#canva-copy">› AI 文案生成</a></li>
-          </ul>
-        </li>
-      </ul>
+      <div class="menu-title">課程單元</div>
+
+      <!-- 選單 1：咖啡館 / 基礎 -->
+      <div id="sidebar-coffee" class="sidebar-group">
+        <ul class="menu-list">
+          <li class="menu-item">
+            <a href="#c-unit1" class="menu-link"><span class="menu-badge badge-blue">1</span> AI 協作四步驟</a>
+            <ul class="sub-menu">
+              <li><a href="#c-sub-ask">› 【問】釐清思路</a></li>
+              <li><a href="#c-sub-rule">› 【定】產出草稿</a></li>
+              <li><a href="#c-sub-bone">› 【骨】邏輯骨架校準</a></li>
+              <li><a href="#c-sub-prod">› 【生】產出簡報</a></li>
+              <li><a href="#c-sub-faq">› 常見 AI 詢問</a></li>
+            </ul>
+          </li>
+          <li class="menu-item">
+            <a href="#c-unit2" class="menu-link"><span class="menu-badge badge-teal">2</span> NotebookLM 應用</a>
+            <ul class="sub-menu">
+              <li><a href="#c-nb-intro">› 功能介紹</a></li>
+              <li><a href="#c-nb-upload">› 參考來源上傳</a></li>
+              <li><a href="#c-nb-chat">› 對話練習</a></li>
+              <li><a href="#c-nb-export">› 匯出成品</a></li>
+              <li><a href="#c-nb-survey">› 問卷調查練習</a></li>
+            </ul>
+          </li>
+          <li class="menu-item">
+            <a href="#c-unit3" class="menu-link"><span class="menu-badge badge-purple">3</span> Gamma 簡報製作</a>
+            <ul class="sub-menu">
+              <li><a href="#c-gamma-import">› 匯入大綱生成簡報</a></li>
+              <li><a href="#c-gamma-prompt">› 簡報 Prompt 範本</a></li>
+              <li><a href="#c-gamma-template">› 課程統一 範本</a></li>
+            </ul>
+          </li>
+          <li class="menu-item">
+            <a href="#c-unit4" class="menu-link"><span class="menu-badge badge-orange">4</span> Canva 海報與社群</a>
+            <ul class="sub-menu">
+              <li><a href="#c-canva-keys">› 快速鍵</a></li>
+              <li><a href="#c-canva-tags">› 元素搜尋關鍵字</a></li>
+              <li><a href="#c-canva-copy">› AI 文案生成</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <!-- 選單 2：北海道旅遊（依截圖還原） -->
+      <div id="sidebar-travel" class="sidebar-group" style="display:none;">
+        <ul class="menu-list">
+          <li class="menu-item">
+            <a href="#t-unit1" class="menu-link"><span class="menu-badge badge-blue">1</span> AI 協作四步驟</a>
+            <ul class="sub-menu">
+              <li><a href="#t-sub-ask">› 【問】釐清思路</a></li>
+              <li><a href="#t-sub-rule">› 【定】產出草稿</a></li>
+              <li><a href="#t-sub-bone">› 【骨】邏輯骨架校準</a></li>
+              <li><a href="#t-sub-prod">› 【生】產出簡報</a></li>
+            </ul>
+          </li>
+          <li class="menu-item">
+            <a href="#t-unit2" class="menu-link"><span class="menu-badge badge-teal">2</span> 生成圖片</a>
+            <ul class="sub-menu">
+              <li><a href="#t-img-info">› 資訊圖 Prompt 範本</a></li>
+              <li><a href="#t-img-poster">› 海報 Prompt 範本</a></li>
+              <li><a href="#t-img-map">› 行程規劃地圖 Prompt</a></li>
+            </ul>
+          </li>
+          <li class="menu-item">
+            <a href="#t-unit3" class="menu-link"><span class="menu-badge badge-purple">3</span> NotebookLM 旅遊主題</a>
+            <ul class="sub-menu">
+              <li><a href="#t-nb-upload">› 參考來源上傳</a></li>
+              <li><a href="#t-nb-corp-chat">› 對話_公司角度</a></li>
+              <li><a href="#t-nb-user-chat">› 對話_個人角度</a></li>
+              <li><a href="#t-nb-corp-res">› 成品_公司角度</a></li>
+              <li><a href="#t-nb-user-res">› 成品_個人角度</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <!-- 選單 3：AI 影音廣告（依截圖還原模組一~七） -->
+      <div id="sidebar-video" class="sidebar-group" style="display:none;">
+        <div class="menu-title" style="font-size:0.8rem; color:#991b1b;">課程單元 (模組一～七)</div>
+        <ul class="menu-list">
+          <li class="menu-item">
+            <a href="#v-unit1" class="menu-link"><span class="menu-badge badge-rose">1</span> 腳本與分鏡規劃</a>
+            <ul class="sub-menu">
+              <li><a href="#v-script-prompt">› 修正合併 AI 提示詞</a></li>
+            </ul>
+          </li>
+          <li class="menu-item">
+            <a href="#v-unit2" class="menu-link"><span class="menu-badge badge-purple">3</span> 動態影片的生成</a>
+            <ul class="sub-menu">
+              <li><a href="#v-video-tool">› Flow / Kling 影片</a></li>
+              <li><a href="#v-video-theory">› 角色一致性理論</a></li>
+            </ul>
+          </li>
+          <li class="menu-item">
+            <a href="#v-unit3" class="menu-link"><span class="menu-badge badge-orange">4</span> 旁白配音</a>
+            <ul class="sub-menu">
+              <li><a href="#v-voice-compare">› 4款工具比較</a></li>
+              <li><a href="#v-voice-studio">› Google AI Studio</a></li>
+              <li><a href="#v-voice-myedit">› MyEdit 精簡版</a></li>
+            </ul>
+          </li>
+          <li class="menu-item">
+            <a href="#v-unit4" class="menu-link"><span class="menu-badge badge-teal">4</span> 背景音樂產出</a>
+            <ul class="sub-menu">
+              <li><a href="#v-music-suno">› Suno</a></li>
+              <li><a href="#v-music-gemini">› Gemini之下音樂</a></li>
+            </ul>
+          </li>
+          <li class="menu-item">
+            <a href="#v-unit5" class="menu-link"><span class="menu-badge badge-blue">5</span> 集大成與最終剪輯</a>
+            <ul class="sub-menu">
+              <li><a href="#v-capcut-list">› CapCut (剪映) 剪輯清單</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
     </aside>
 
-    <!-- 中間內容區 -->
+    <!-- ==================== 中間內容區（動態切換） ==================== -->
     <main class="content-area">
 
-      <!-- ==================== 主題 1：咖啡館 / 寵物 / 基礎四步驟 ==================== -->
-      <div id="theme-coffee" class="theme-content">
-        
+      <!-- 主題 1：咖啡館 / 寵物 -->
+      <div id="content-coffee" class="content-group">
         <!-- 單元 1 -->
-        <div class="content-card" id="unit1" style="margin-bottom: 24px;">
+        <div class="content-card" id="c-unit1" style="margin-bottom: 24px;">
           <div class="section-header">
-            <div class="section-num badge-1">1</div>
+            <div class="section-num badge-blue">1</div>
             <div class="section-title">AI 協作四步驟</div>
           </div>
           <div class="theme-tag">📌 練習主題：咖啡館開店行銷企劃</div>
@@ -200,39 +275,36 @@
 
           <h3 style="font-size: 1rem;">AI 協作四步驟（問定骨生）</h3>
           <table class="styled-table">
-            <thead><tr><th>步驟</th><th>口訣</th><th>白話好記</th><th>核心動作</th></tr></thead>
+            <thead><tr><th>步驟</th><th>口訣</th><th>核心動作</th></tr></thead>
             <tbody>
-              <tr><td>步驟一</td><td><strong>【問】</strong>AI 問 AI</td><td>釐清盲點</td><td>讓 AI 當顧問反問，把專家盲點和受眾看不懂的鴻溝問出來</td></tr>
-              <tr><td>步驟二</td><td><strong>【定】</strong>定標準</td><td>嚴查規矩</td><td>用 MD 結構化＋Code Block，把正確的知識文件定死，不讓 AI 瞎編</td></tr>
-              <tr><td>步驟三</td><td><strong>【骨】</strong>長骨架</td><td>排版卡位</td><td>管住 AI 過度積極，只長邏輯骨架大綱、不寫廢話內文</td></tr>
-              <tr><td>步驟四</td><td><strong>【生】</strong>生結果</td><td>適性生產</td><td>反向查證後，選對工具，生出可用的最終成品</td></tr>
+              <tr><td>步驟一</td><td><strong>【問】</strong>AI 問 AI</td><td>讓 AI 當顧問反問，釐清專家盲點與受眾需求</td></tr>
+              <tr><td>步驟二</td><td><strong>【定】</strong>定標準</td><td>用 MD 結構化＋Code Block，定死知識文件規範</td></tr>
+              <tr><td>步驟三</td><td><strong>【骨】</strong>長骨架</td><td>管住 AI 過度積極，只產出邏輯骨架與大綱</td></tr>
+              <tr><td>步驟四</td><td><strong>【生】</strong>生結果</td><td>反向查證後，選對工具生出可用的最終成品</td></tr>
             </tbody>
           </table>
 
-          <!-- 【問】 -->
-          <div class="sub-section" id="sub-ask">
+          <div class="sub-section" id="c-sub-ask">
             <div class="sub-title" style="color:#991b1b;">【問】 AI 問 AI — 釐清思路 （GPS：G目標+P背景）</div>
             <div class="alert-box">
-              <strong>AI 幻覺</strong>：AI 產生看似合理，但實際上錯誤、不存在或未經查證的內容。先讓 AI 反向提問釐清需求，確保 AI 在「已知的約束條件」下產出，可降低幻覺風險。AI 結果仍需人工確認、數據需核對來源。
+              <strong>AI 幻覺</strong>：AI 產生看似合理，但實際上錯誤、不存在或未經查證的內容。先讓 AI 反向提問釐清需求，確保 AI 在「已知的約束條件」下產出，可降低幻覺風險。
             </div>
-
             <div class="prompt-box">
               <div class="prompt-header">
                 <span class="prompt-label">📌 S1：Prompt — 釐清思路</span>
-                <button class="copy-btn" onclick="copyPrompt('p1', this)">複製</button>
+                <button class="copy-btn" onclick="copyPrompt('cp1', this)">複製</button>
               </div>
-              <pre class="prompt-content" id="p1">我目前的任務是：「撰寫一間新開咖啡館的行銷企劃」。
+              <pre class="prompt-content" id="cp1">我目前的任務是：「撰寫一間新開咖啡館的行銷企劃」。
 在你開始動手之前，請先以【資深餐飲品牌顧問】的角色，
 對我提出5個問題，協助我釐清這份企劃的目標客群、核心賣點與重點。
 請一次提出所有問題，等我回答後再開始。</pre>
             </div>
-
             <div class="prompt-box">
               <div class="prompt-header">
-                <span class="prompt-label">📌 S2：Prompt — 「結構化的定案資料」，討論匯出MD檔</span>
-                <button class="copy-btn" onclick="copyPrompt('p2', this)">複製</button>
+                <span class="prompt-label">📌 S2：Prompt — 討論匯出 MD 檔</span>
+                <button class="copy-btn" onclick="copyPrompt('cp2', this)">複製</button>
               </div>
-              <pre class="prompt-content" id="p2">我們剛才的討論已經完成，請將討論結果整理成一份 MD 檔，作為後續開新對話時的「背景資料」使用。
+              <pre class="prompt-content" id="cp2">我們剛才的討論已經完成，請將討論結果整理成一份 MD 檔，作為後續開新對話時的「背景資料」使用。
 請依以下結構整理，禁止寫成對話紀錄或流水帳：
 
 1. 任務背景（這份內容是做什麼、給誰看）
@@ -242,13 +314,10 @@
 
 輸出時請放入 Markdown 程式碼區塊，方便我直接複製存檔。</pre>
             </div>
-            <p class="note-text">➜ 目的：用於討論結束後整理結論，方便日後開新對話或免費額度用盡時，直接帶入背景接續進度。</p>
           </div>
 
-          <!-- 【定】 -->
-          <div class="sub-section" id="sub-rule">
+          <div class="sub-section" id="c-sub-rule">
             <div class="sub-title" style="color:#2563eb;">【定】定標準 — 產出草稿</div>
-            
             <div class="alert-warning">
               <strong>定標準的三個關鍵要素：</strong>
               <ul>
@@ -257,13 +326,12 @@
                 <li>邊界聲明：明確禁止 （禁止捏造數據、禁止超過字數）</li>
               </ul>
             </div>
-
             <div class="prompt-box">
               <div class="prompt-header">
                 <span class="prompt-label">📌 情境1：完全交給 AI 決定架構</span>
-                <button class="copy-btn" onclick="copyPrompt('p3', this)">複製</button>
+                <button class="copy-btn" onclick="copyPrompt('cp3', this)">複製</button>
               </div>
-              <pre class="prompt-content" id="p3">根據我們剛才討論的內容，產出正式文件。輸出時遵守以下規範：
+              <pre class="prompt-content" id="cp3">根據我們剛才討論的內容，產出正式文件。輸出時遵守以下規範：
 
 # 角色設定
 你是一位資深餐飲品牌顧問，擅長社區型咖啡館的定位與開店策略。
@@ -284,48 +352,16 @@
 - 每點不超過30字
 - 禁止捏造具體數據(預算/業績僅寫「待填入」)</pre>
             </div>
-            <p class="note-text">➜ 適合：還沒想好怎麼分章節，想先看看 AI 怎麼安排，再決定要不要調整</p>
-
-            <div class="prompt-box">
-              <div class="prompt-header">
-                <span class="prompt-label">📌 情境2：先問 AI 建議架構，但不急著生成內容</span>
-                <button class="copy-btn" onclick="copyPrompt('p4', this)">複製</button>
-              </div>
-              <pre class="prompt-content" id="p4">你是一位資深餐飲品牌顧問，擅長社區型咖啡館的定位與開店策略。
-
-- 根據我們剛才討論的內容，請先不要急著寫草稿。
-- 請你先提出2~3種可能的「內容架構」安排方式（列出章節標題即可）
-- 簡短說明每種架構的適用情境，等我選定方向後再開始產出文案。</pre>
-            </div>
-            <p class="note-text">➜ 適合：想要參與架構決策，但不想自己從零開始想，讓 AI 先給選項</p>
           </div>
 
-          <!-- 【骨】 -->
-          <div class="sub-section" id="sub-bone">
+          <div class="sub-section" id="c-sub-bone">
             <div class="sub-title" style="color:#2563eb;">【骨】長骨架 — 邏輯骨架校準</div>
-            
-            <div class="title-icon">▶️ 管住 AI 三招</div>
-            <table class="styled-table">
-              <thead><tr><th>招式</th><th>指令關鍵字</th><th>說明</th></tr></thead>
-              <tbody>
-                <tr><td>① 宣告禁令</td><td>「禁止填充內文」「只出標題與子項目」</td><td>直接說不要什麼</td></tr>
-                <tr><td>② 指定格式</td><td>「以 Markdown 標題層級輸出」</td><td>用格式約束輸出範圍</td></tr>
-                <tr><td>③ 等待確認</td><td>「輸出大綱後停止，等我確認後再繼續」</td><td>讓人控制節奏</td></tr>
-              </tbody>
-            </table>
-
-            <div class="title-icon">▶️ 簡報時間與張數參考</div>
-            <ul style="font-size: 0.95rem; color: #475569; margin-left: 28px; margin-bottom: 24px;">
-              <li style="margin-bottom: 6px;">通常 1 分鐘對應 1~1.5 張投影片 （一般節奏）</li>
-              <li>5 分鐘報告 ➔ 建議 8-10 張 ／ 10 分鐘報告 ➔ 建議 12-15 張</li>
-            </ul>
-
             <div class="prompt-box">
               <div class="prompt-header">
-                <span class="prompt-label">📌 版本一：簡單版（適合一般情形）</span>
-                <button class="copy-btn" onclick="copyPrompt('p5', this)">複製</button>
+                <span class="prompt-label">📌 版本一：簡單版</span>
+                <button class="copy-btn" onclick="copyPrompt('cp5', this)">複製</button>
               </div>
-              <pre class="prompt-content" id="p5">現在進入【邏輯骨架校準階段】。
+              <pre class="prompt-content" id="cp5">現在進入【邏輯骨架校準階段】。
 
 請根據我們剛才完成的「咖啡館開店行銷企劃」報告，
 針對【咖啡館投資夥伴與創業顧問】擬定簡報大綱。
@@ -337,535 +373,394 @@
 - 僅輸出邏輯骨架後停止，等我確認後再繼續
 - 強制使用 Markdown code block 區塊輸出</pre>
             </div>
-
-            <div class="prompt-box">
-              <div class="prompt-header">
-                <span class="prompt-label">📌 版本二：完整版（對應視覺規格）</span>
-                <button class="copy-btn" onclick="copyPrompt('p6', this)">複製</button>
-              </div>
-              <pre class="prompt-content" id="p6"># 任務進度：【簡報大綱校準階段】
-
-## 銜接背景與角色設定
-- 資料來源：依據我們剛才完成的「咖啡館開店行銷企劃」報告
-- AI 角色：資深餐飲品牌顧問，協助將企劃轉化為具說服力的簡報邏輯
-- 簡報對象：咖啡館投資夥伴與創業顧問，偏好溫度感、重視可執行性
-
-## 簡報規格參數
-- 上台時間：10 分鐘
-- 投影片張數：約 8 張
-- 輸出格式：以「投影片 [編號]：[標題]」呈現
-- 每頁必含：核心論點摘要 + 建議視覺化圖型
-
-## 參、視覺與版面規格
-- 整體風格：溫暖質感風（木質紋理感、手寫字體點綴）
-- 色系：三色限定
-  主色：拿鐵棕 #6F4E37
-  輔色：奶泡白 #F5EFE6
-  底色：焦糖金 #C8924B
-- 視覺質感：無陰影、無漸層、線條手繪感
-- 封面設計：強制預留上方 30% 標題空白區
-- 內頁排版：複雜數據頁標註「便當盒排版法」或「網格矩陣」
-
-## 強制約束
-- 禁止產出具體簡報文案、旁白或生圖指令
-- 僅輸出邏輯骨架後停止，等我確認後再繼續
-
-## 格式鎖定
-- 強制以 Markdown 程式碼區塊輸出大綱
-
-「報告背景已備齊，請開始擬定簡報邏輯大綱。」</pre>
-            </div>
           </div>
 
-          <!-- 【生】 -->
-          <div class="sub-section" id="sub-prod">
+          <div class="sub-section" id="c-sub-prod">
             <div class="sub-title" style="color:#2563eb;">【生】生結果 — 產出簡報</div>
-            
-            <div class="alert-box">
-              <strong>反向查證（紅隊測試）</strong>：請 AI 扮演「主管／顧客／審查單位」進行檢視，提前找出缺漏並補強。<br>
-              <em>例1：請扮演嚴格的咖啡館加盟顧問，針對這份開店行銷企劃提出3個可能需要改善的問題<br>
-              例2：請以社區居民角度，檢查這份開店行銷簡報是否有不容易理解或沒有共鳴的地方<br>
-              例3：請以開店投資夥伴角度，指出這份企劃可能缺少哪些數據或說明</em>
-            </div>
-
-            <table class="styled-table">
-              <thead><tr><th>輸出類型</th><th>建議工具</th><th>指令關鍵字</th></tr></thead>
-              <tbody>
-                <tr><td>正式 Word 報告</td><td>Gemini Canvas</td><td>「直接建立 Google 文件」</td></tr>
-                <tr><td>簡報投影片</td><td>Gemini Canvas</td><td>「直接建立 Google 簡報，16:9」</td></tr>
-                <tr><td>互動式 HTML 簡報</td><td>Gemini Artifacts</td><td>「使用 HTML 與 Tailwind CSS 製作，啟動 Preview」</td></tr>
-                <tr><td>知識庫跨文件整合</td><td>NotebookLM</td><td>上傳來源 → 對話查詢</td></tr>
-              </tbody>
-            </table>
-
             <div class="prompt-box">
               <div class="prompt-header">
                 <span class="prompt-label">📌 簡報型 Prompt</span>
-                <button class="copy-btn" onclick="copyPrompt('p7', this)">複製</button>
+                <button class="copy-btn" onclick="copyPrompt('cp7', this)">複製</button>
               </div>
-              <pre class="prompt-content" id="p7">邏輯大綱已確認。直接建立 Google 簡報。
+              <pre class="prompt-content" id="cp7">邏輯大綱已確認。直接建立 Google 簡報。
 - 內容需填充每張投影片之正式文案
 - 聚焦於咖啡館開店初期90天的行銷時程與分工
 - 呈現對象：咖啡館投資夥伴與創業顧問
 - 產出後請顯示「匯出成簡報」的連結
 - 尺寸：16:9</pre>
             </div>
-
-            <div class="prompt-box">
-              <div class="prompt-header">
-                <span class="prompt-label">📌 程式碼型 Prompt</span>
-                <button class="copy-btn" onclick="copyPrompt('p8', this)">複製</button>
-              </div>
-              <pre class="prompt-content" id="p8">邏輯大綱已確認。
-使用 HTML 與 Tailwind CSS 程式碼製作數位簡報。
-- 視覺風格：溫暖質感品牌風（拿鐵棕 + 奶泡白 + 焦糖金）
-- 結構規範：行銷時程採用【便當盒排版】，KPI/數據採用【數字卡片版型】
-- 請將結果以程式碼區塊呈現，並同步啟動「預覽 (Preview)」視窗
-- 尺寸：16:9</pre>
-            </div>
-          </div>
-
-          <!-- 常見 AI 詢問 -->
-          <div class="sub-section" id="sub-faq">
-            <div class="sub-title" style="color:#2563eb;">常見 AI 詢問</div>
-            
-            <div class="prompt-box">
-              <div class="prompt-header">
-                <span class="prompt-label">📌 Q1：如何參考過去文件（照貓畫虎）</span>
-                <button class="copy-btn" onclick="copyPrompt('p9', this)">複製</button>
-              </div>
-              <pre class="prompt-content" id="p9"># 角色與任務
-你是一位專業的行政與文書處理專家。請根據我上傳的參考附檔（前三次的公文/會議紀錄），學習其結構、排版格式、用字語氣與規範，並依據本次的新增內容，生成全新的文件。
-
-# 輸出限制（重要）
-- 請直接在對話框中以「文字與 Markdown 格式」完整顯示內容，方便我直接複製貼上。
-- 請勿產生任何下載檔案（如 Word、PDF 或 txt 檔），我只需要文字回覆。
-
-# 本次文件基本資訊
-- 文件類型：【例如：會議紀錄 / 公告 / 公文】
-- 本次會議/事件主題：【請輸入本次的主題】
-- 本次執行/會議日期：【請輸入日期】
-
-# 本次會議重點與核心內容
-【請在此處貼上或寫下本次會議的實際討論文字、決議事項或口述紀錄，字數不限，越詳細越好】</pre>
-            </div>
-
-            <div class="prompt-box">
-              <div class="prompt-header">
-                <span class="prompt-label">📌 Q2：如何生成想要的資訊圖</span>
-                <button class="copy-btn" onclick="copyPrompt('p9-2', this)">複製</button>
-              </div>
-              <pre class="prompt-content" id="p9-2"># 任務說明
-我上傳了一張參考圖片。我想要製作一張全新主題的「資訊圖表」，請你參考附圖的整體視覺風格、排版邏輯和美感（例如色彩搭配、圖文配比、線條感），來幫我設計這次的新內容。
-
-# 本次製作需求
-- 圖表主題：咖啡館開店倒數
-- 目標讀者：社區居民與潛在顧客
-- 內容與語氣要求：文字要親切、有溫度，多用生活化的小故事或場景描述，避免過度商業化用語
-- 圖片尺寸比例：1:1 正方形</pre>
-            </div>
           </div>
         </div>
 
-        <!-- 單元 2：NotebookLM 完整擴充 -->
-        <div class="content-card" id="unit2" style="margin-bottom: 24px;">
+        <!-- 單元 2 -->
+        <div class="content-card" id="c-unit2" style="margin-bottom: 24px;">
           <div class="section-header">
-            <div class="section-num badge-2">2</div>
-            <div class="section-title">NotebookLM 文件智慧整合應用</div>
+            <div class="section-num badge-teal">2</div>
+            <div class="section-title">NotebookLM 應用</div>
           </div>
           <div class="theme-tag" style="background:#ccfbf1; color:#0f766e;">📌 知識庫建立與來源交叉比對</div>
-
-          <div class="sub-section" id="nb-intro" style="border-top:none; margin-top:0;">
-            <div class="sub-title" style="color:#0d9488;">功能介紹</div>
-            <p style="font-size: 0.9rem; color: #475569;">NotebookLM 是以「您上傳的資料來源」為唯一真理的 AI 筆記系統，能精準引用來源，不會胡亂生成外部資訊。</p>
-            <table class="styled-table">
-              <thead><tr><th>功能特點</th><th>適用情境</th><th>優勢</th></tr></thead>
-              <tbody>
-                <tr><td><strong>來源嚴格錨定</strong></td><td>研讀法規、合約、長篇報告</td><td>每句回答皆附帶可點擊的原文章節引述標註</td></tr>
-                <tr><td><strong>跨文件整合</strong></td><td>彙整多份會議紀錄或競品分析</td><td>快速對比不同檔案間的差異與共識</td></tr>
-                <tr><td><strong>語音導覽 (Audio Overview)</strong></td><td>長篇文件快速消化</td><td>一鍵生成雙人對話式 Podcast 快速理解核心</td></tr>
-              </tbody>
-            </table>
-          </div>
-
-          <div class="sub-section" id="nb-upload">
-            <div class="sub-title" style="color:#0d9488;">參考來源上傳與限制</div>
-            <table class="styled-table">
-              <thead><tr><th>限制與建議</th><th>說明</th></tr></thead>
-              <tbody>
-                <tr><td><strong>來源數量</strong></td><td>單一筆記本最多支援上傳 <strong>50 個</strong> 獨立來源。</td></tr>
-                <tr><td><strong>字數限制</strong></td><td>每個來源文件最多 <strong>500,000 字</strong>。</td></tr>
-                <tr><td><strong>支援格式</strong></td><td>PDF、Google 文件、Google 簡報、複製純文字、網址 URL、YouTube 逐字稿。</td></tr>
-              </tbody>
-            </table>
-          </div>
-
-          <div class="sub-section" id="nb-chat">
-            <div class="sub-title" style="color:#0d9488;">對話練習</div>
-            <div class="prompt-box">
-              <div class="prompt-header">
-                <span class="prompt-label">📌 跨文件比對與觀點提煉</span>
-                <button class="copy-btn" onclick="copyPrompt('p10', this)">複製</button>
-              </div>
-              <pre class="prompt-content" id="p10">請依據我所提供的所有來源資料，回答以下問題：
+          <div class="prompt-box" id="c-nb-chat">
+            <div class="prompt-header">
+              <span class="prompt-label">📌 跨文件比對與觀點提煉</span>
+              <button class="copy-btn" onclick="copyPrompt('cp10', this)">複製</button>
+            </div>
+            <pre class="prompt-content" id="cp10">請依據我所提供的所有來源資料，回答以下問題：
 1. 請整理出這些資料中對於【主題/業務】的共同共識是什麼？
 2. 不同的來源之間是否存在矛盾或相異的觀點？請以表格對比列出。
 3. 請嚴格僅依據上傳來源回答，切勿加入外部未提及的推論，並在每點後附上引文依據。</pre>
-            </div>
-          </div>
-
-          <div class="sub-section" id="nb-export">
-            <div class="sub-title" style="color:#0d9488;">筆記與成品匯出</div>
-            <div class="prompt-box">
-              <div class="prompt-header">
-                <span class="prompt-label">📌 結構化學習指南／FAQ 筆記匯出</span>
-                <button class="copy-btn" onclick="copyPrompt('p11', this)">複製</button>
-              </div>
-              <pre class="prompt-content" id="p11">請將目前筆記本中的核心知識整理為一份【新人學習指南】：
-- 包含：核心概念定義、標準作業流程(SOP)、常見問題 FAQ（至少 5 題）
-- 格式要求：清晰的 Markdown 標題層級與條列清單，適合直接匯出成 Google 文件保存。</pre>
-            </div>
-          </div>
-
-          <div class="sub-section" id="nb-survey">
-            <div class="sub-title" style="color:#0d9488;">問卷調查練習</div>
-            <div class="prompt-box">
-              <div class="prompt-header">
-                <span class="prompt-label">📌 問卷反饋深度洞察</span>
-                <button class="copy-btn" onclick="copyPrompt('p12', this)">複製</button>
-              </div>
-              <pre class="prompt-content" id="p12">這是一份問卷開放式填答的回饋資料。請幫我完成以下質性分析：
-1. 找出受訪者滿意度最高的 3 個核心亮點。
-2. 歸納出最常被抱怨或期望改善的 3 大痛點。
-3. 針對改善痛點，提出 3 個立即可執行的優化建議措施。</pre>
-            </div>
           </div>
         </div>
 
-        <!-- 單元 3：Gamma -->
-        <div class="content-card" id="unit3" style="margin-bottom: 24px;">
+        <!-- 單元 3 -->
+        <div class="content-card" id="c-unit3" style="margin-bottom: 24px;">
           <div class="section-header">
-            <div class="section-num badge-3">3</div>
+            <div class="section-num badge-purple">3</div>
             <div class="section-title">Gamma 簡報製作</div>
           </div>
           <div class="theme-tag" style="background:#f3e8ff; color:#6b21a8;">📌 AI 快速排版生成高質感投影片</div>
-
-          <div class="sub-section" id="gamma-import" style="border-top:none; margin-top:0;">
-            <div class="sub-title" style="color:#7c3aed;">匯入大綱生成簡報</div>
-            <p style="font-size: 0.9rem; color: #475569;">將先前提煉好的 Markdown 邏輯骨架，直接貼入 Gamma 的「文字貼上 (Paste in text)」模式，即可自動排版生成投影片。</p>
-          </div>
-
-          <div class="sub-section" id="gamma-prompt">
-            <div class="sub-title" style="color:#7c3aed;">簡報 Prompt 範本</div>
-            <div class="prompt-box">
-              <div class="prompt-header">
-                <span class="prompt-label">📌 Gamma 專用：大綱轉卡片語法</span>
-                <button class="copy-btn" onclick="copyPrompt('p13', this)">複製</button>
-              </div>
-              <pre class="prompt-content" id="p13">請將以下內容轉換為適合貼入 Gamma 簡報工具的文字大綱格式：
+          <div class="prompt-box" id="c-gamma-prompt">
+            <div class="prompt-header">
+              <span class="prompt-label">📌 Gamma 專用：大綱轉卡片語法</span>
+              <button class="copy-btn" onclick="copyPrompt('cp13', this)">複製</button>
+            </div>
+            <pre class="prompt-content" id="cp13">請將以下內容轉換為適合貼入 Gamma 簡報工具的文字大綱格式：
 - 每張投影片請用 `---` 分隔
 - 投影片標題使用 `#` 一級標題
 - 內頁重點使用精簡條列（每點不超過 20 字）
-- 自動加入合適的 emoji 圖示以增強視覺感
-- 請保持重點精準、留白充足，避免大段落文字擠在一起</pre>
-            </div>
-          </div>
-
-          <div class="sub-section" id="gamma-template">
-            <div class="sub-title" style="color:#7c3aed;">課程統一 範本</div>
-            <div class="prompt-box">
-              <div class="prompt-header">
-                <span class="prompt-label">📌 10頁商務企劃提案骨架</span>
-                <button class="copy-btn" onclick="copyPrompt('p14', this)">複製</button>
-              </div>
-              <pre class="prompt-content" id="p14">---
-# 封面：新創品牌行銷提案
-### 打造具備社群影響力與商業變現的新世代經營策略
-- 報告人：企劃團隊
-- 日期：2026年
-
----
-# 一、市場現況與痛點分析
-- 傳統行銷轉換率逐年下降
-- 社群流量獲取成本過高
-- 客群黏著度不足、回購率低</pre>
-            </div>
+- 自動加入合適的 emoji 圖示以增強視覺感</pre>
           </div>
         </div>
 
-        <!-- 單元 4：Canva -->
-        <div class="content-card" id="unit4">
+        <!-- 單元 4 -->
+        <div class="content-card" id="c-unit4">
           <div class="section-header">
-            <div class="section-num badge-4">4</div>
+            <div class="section-num badge-orange">4</div>
             <div class="section-title">Canva 海報與社群</div>
           </div>
           <div class="theme-tag" style="background:#ffedd5; color:#c2410c;">📌 視覺排版、快捷鍵與社群文案</div>
+          <div class="prompt-box" id="c-canva-copy">
+            <div class="prompt-header">
+              <span class="prompt-label">📌 IG 社群海報三段式文案生成</span>
+              <button class="copy-btn" onclick="copyPrompt('cp15', this)">複製</button>
+            </div>
+            <pre class="prompt-content" id="cp15">請幫我為一張【IG正方形促銷海報】撰寫吸引人的文案：
+- 主題：【例如：春季新品上市 / 限時快閃優惠】
+- 格式要求：主標題（10字內）、副標題（20字內）、行動呼籲 CTA。
+- 請提供 3 組不同風格供挑選。</pre>
+          </div>
+        </div>
+      </div>
 
-          <div class="sub-section" id="canva-keys" style="border-top:none; margin-top:0;">
-            <div class="sub-title" style="color:#ea580c;">常用魔法快速鍵</div>
+      <!-- 主題 2：北海道旅遊（100% 依截圖還原） -->
+      <div id="content-travel" class="content-group" style="display:none;">
+        
+        <!-- 單元 1 -->
+        <div class="content-card" id="t-unit1" style="margin-bottom: 24px;">
+          <div class="section-header">
+            <div class="section-num badge-blue">1</div>
+            <div class="section-title">AI 協作四步驟 (北海道旅遊)</div>
+          </div>
+          <div class="theme-tag">📌 練習主題：北海道旅遊企劃</div>
+
+          <div class="sub-section" id="t-sub-ask" style="border-top:none; margin-top:0;">
+            <div class="sub-title" style="color:#991b1b;">【問】 AI 問 AI — 釐清思路</div>
+            <div class="prompt-box">
+              <div class="prompt-header">
+                <span class="prompt-label">📌 S1：Prompt — 釐清思路</span>
+                <button class="copy-btn" onclick="copyPrompt('tp1', this)">複製</button>
+              </div>
+              <pre class="prompt-content" id="tp1">我目前的任務是：「規劃一趟北海道旅遊企劃」。
+在你開始動手之前，請先以【資深日本旅遊顧問】的角色，
+根據上述參考資料，對我提出5個問題，
+協助我釐清這趟旅程的目標族群、預算範圍、景點偏好與行程天數。
+請一次提出所有問題，等我回答後再開始規劃。</pre>
+            </div>
+
+            <div class="prompt-box">
+              <div class="prompt-header">
+                <span class="prompt-label">📌 S2：Prompt — 討論匯出 MD 檔</span>
+                <button class="copy-btn" onclick="copyPrompt('tp2', this)">複製</button>
+              </div>
+              <pre class="prompt-content" id="tp2">我們剛才的討論已經完成，請將討論結果整理成一份 MD 檔，作為後續開新對話時的「背景資料」使用。
+請依以下結構整理，禁止寫成對話紀錄或流水帳：
+
+1. 旅遊背景（這趟旅程是給誰安排、目的為何）
+2. 角色設定（先前定案的AI角色）
+3. 已確認的條件（天數、預算、旅伴組成、偏好景點類型）
+4. 尚未決定的部分（如果有的話）
+
+輸出時請放入 Markdown 程式碼區塊，方便我直接複製存檔。</pre>
+            </div>
+          </div>
+
+          <div class="sub-section" id="t-sub-rule">
+            <div class="sub-title" style="color:#991b1b;">【定】 產出草稿</div>
+            <div class="prompt-box">
+              <div class="prompt-header">
+                <span class="prompt-label">📌 定案旅遊草稿 Prompt</span>
+                <button class="copy-btn" onclick="copyPrompt('tp3', this)">複製</button>
+              </div>
+              <pre class="prompt-content" id="tp3">根據剛才定案的 MD 背景資料，為我們產出正式的北海道行程草案：
+- 包含：每日交通規劃、景點停留建議、必吃在地美食
+- 輸出格式：Markdown 表格與重點條列</pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- 單元 2：生成圖片 -->
+        <div class="content-card" id="t-unit2" style="margin-bottom: 24px;">
+          <div class="section-header">
+            <div class="section-num badge-teal">2</div>
+            <div class="section-title">生成圖片</div>
+          </div>
+          <div class="theme-tag" style="background:#ccfbf1; color:#0f766e;">📌 視覺圖表與旅遊海報生成</div>
+
+          <div class="sub-section" id="t-img-info" style="border-top:none; margin-top:0;">
+            <div class="sub-title" style="color:#0d9488;">資訊圖 Prompt 範本</div>
+            <div class="prompt-box">
+              <div class="prompt-header">
+                <span class="prompt-label">📌 北海道必吃美食資訊圖 Prompt</span>
+                <button class="copy-btn" onclick="copyPrompt('tp4', this)">複製</button>
+              </div>
+              <pre class="prompt-content" id="tp4">Infographic about Top 5 Must-Eat Foods in Hokkaido (Soup Curry, Genghis Khan BBQ, Seafood Don, Ramen, Soft Serve), 
+clean modern layout, flat vector illustrations, pastel color palette, minimalist design, 8k resolution --ar 4:5</pre>
+            </div>
+          </div>
+
+          <div class="sub-section" id="t-img-poster">
+            <div class="sub-title" style="color:#0d9488;">海報 Prompt 範本</div>
+            <div class="prompt-box">
+              <div class="prompt-header">
+                <span class="prompt-label">📌 富良野花海宣傳海報 Prompt</span>
+                <button class="copy-btn" onclick="copyPrompt('tp5', this)">複製</button>
+              </div>
+              <pre class="prompt-content" id="tp5">Travel promotional poster for Furano Flower Fields in Hokkaido, vast lavender rolling hills under sunny blue sky, 
+cinematic photography, commercial advertising poster style, vibrant summer colors, high resolution --ar 9:16</pre>
+            </div>
+          </div>
+
+          <div class="sub-section" id="t-img-map">
+            <div class="sub-title" style="color:#0d9488;">行程規劃地圖 Prompt</div>
+            <div class="prompt-box">
+              <div class="prompt-header">
+                <span class="prompt-label">📌 可愛手繪風自駕路線地圖 Prompt</span>
+                <button class="copy-btn" onclick="copyPrompt('tp6', this)">複製</button>
+              </div>
+              <pre class="prompt-content" id="tp6">Cute hand-drawn tourist route map of Hokkaido, connecting Sapporo, Otaru, Asahikawa, Furano, and Biei, 
+with cute landmark icons, road trip map illustration, watercolor style, clear markers, cream background --ar 16:9</pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- 單元 3：NotebookLM 旅遊主題 -->
+        <div class="content-card" id="t-unit3">
+          <div class="section-header">
+            <div class="section-num badge-purple">3</div>
+            <div class="section-title">NotebookLM 旅遊主題</div>
+          </div>
+          <div class="theme-tag" style="background:#f3e8ff; color:#6b21a8;">📌 公司員旅 vs 個人自由行 交叉應用</div>
+
+          <div class="sub-section" id="t-nb-upload" style="border-top:none; margin-top:0;">
+            <div class="sub-title" style="color:#7c3aed;">參考來源上傳</div>
+            <p style="font-size:0.9rem; color:#475569;">上傳日本觀光局指南、機票報價單、各景點營業時間與交通方式 PDF。</p>
+          </div>
+
+          <div class="sub-section" id="t-nb-corp-chat">
+            <div class="sub-title" style="color:#7c3aed;">對話_公司角度</div>
+            <div class="prompt-box">
+              <div class="prompt-header">
+                <span class="prompt-label">📌 公司員工旅遊預算效益分析 Prompt</span>
+                <button class="copy-btn" onclick="copyPrompt('tp7', this)">複製</button>
+              </div>
+              <pre class="prompt-content" id="tp7">請依據上傳的旅行社團體報價單，分析每人預算在 35,000 元上限下，
+如何兼顧「團體向心力活動」與「半日自由活動」的最佳行程配比。</pre>
+            </div>
+          </div>
+
+          <div class="sub-section" id="t-nb-user-chat">
+            <div class="sub-title" style="color:#7c3aed;">對話_個人角度</div>
+            <div class="prompt-box">
+              <div class="prompt-header">
+                <span class="prompt-label">📌 個人自駕美食與景點順遊排程 Prompt</span>
+                <button class="copy-btn" onclick="copyPrompt('tp8', this)">複製</button>
+              </div>
+              <pre class="prompt-content" id="tp8">請比對上傳的 5 篇部落客食記，找出小樽運河周邊評價最高、排隊時間低於 30 分鐘的在地海鮮丼店家。</pre>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 主題 3：AI 影音廣告（100% 依截圖還原） -->
+      <div id="content-video" class="content-group" style="display:none;">
+        
+        <!-- 單元 1 -->
+        <div class="content-card" id="v-unit1" style="margin-bottom: 24px;">
+          <div class="section-header">
+            <div class="section-num badge-rose">1</div>
+            <div class="section-title">腳本與分鏡規劃</div>
+          </div>
+          <div class="theme-tag" style="background:#ffe4e6; color:#be123c;">📌 爆款短影音與提示詞修正合併</div>
+
+          <div class="sub-section" id="v-script-prompt" style="border-top:none; margin-top:0;">
+            <div class="sub-title" style="color:#be123c;">修正合併 AI 提示詞</div>
+            <div class="prompt-box">
+              <div class="prompt-header">
+                <span class="prompt-label">📌 整合腳本與共用設定 Prompt (如截圖範例)</span>
+                <button class="copy-btn" onclick="copyPrompt('vp1', this)">複製</button>
+              </div>
+              <pre class="prompt-content" id="vp1">【情境1：故事細節已有初步想法】
+- 故事情節主軸：[請填入，情節細節仍請你自由發揮]
+- 主角：[請填入，或留空由你決定——主角可以是人物、擬人化物件、或寵物]
+
+【情境2：品牌名稱、產品內容、故事情節、主角皆由你自由發揮】
+（若採用情境1，請忽略此段）
+
+不論採用哪種情形，皆須遵守以下方向：
+- 整體調性要活潑、有記憶點、帶點幽默感，避免走溫馨療癒路線
+- 風格：色彩鮮明、節奏明快、電影感
+- 比例：16:9
+
+請先獨立輸出一段「共用設定（草案）」，內容包含：
+- 整體視覺風格與色調（用一句話描述，之後每一格畫面都要維持一致）
+- 主角的外觀描述草案（外型、特徵、配件——這只是文字初稿，實際外觀將在生成角色設計圖後才正式定稿）
+- 商品的外觀描述草案（如果腳本中有具體商品：形狀、顏色、包裝/標籤樣式、品牌LOGO位置——若無商品可省略此項）
+- 場景的設定草案（如果多個分鏡發生在同一場景：地點、時間、光線氛圍——若每格分鏡場景都不同可省略此項）</pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- 單元 3 -->
+        <div class="content-card" id="v-unit2" style="margin-bottom: 24px;">
+          <div class="section-header">
+            <div class="section-num badge-purple">3</div>
+            <div class="section-title">動態影片的生成</div>
+          </div>
+          <div class="theme-tag" style="background:#f3e8ff; color:#6b21a8;">📌 Flow / Kling 影片與角色一致性理論</div>
+
+          <div class="sub-section" id="v-video-tool" style="border-top:none; margin-top:0;">
+            <div class="sub-title" style="color:#7c3aed;">Flow / Kling 影片生成 Prompt</div>
+            <div class="prompt-box">
+              <div class="prompt-header">
+                <span class="prompt-label">📌 專業動態運鏡指令</span>
+                <button class="copy-btn" onclick="copyPrompt('vp2', this)">複製</button>
+              </div>
+              <pre class="prompt-content" id="vp2">Dynamic camera push in, cinematic lighting, shallow depth of field, high quality 4k video, smooth movement, commercial advertisement aesthetic.</pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- 單元 4：旁白配音 -->
+        <div class="content-card" id="v-unit3" style="margin-bottom: 24px;">
+          <div class="section-header">
+            <div class="section-num badge-orange">4</div>
+            <div class="section-title">旁白配音</div>
+          </div>
+          <div class="theme-tag" style="background:#ffedd5; color:#c2410c;">📌 工具比較與語氣控制</div>
+
+          <div class="sub-section" id="v-voice-compare" style="border-top:none; margin-top:0;">
+            <div class="sub-title" style="color:#ea580c;">4款工具比較</div>
             <table class="styled-table">
-              <thead><tr><th>按鍵</th><th>功能</th><th>說明</th></tr></thead>
+              <thead><tr><th>工具</th><th>特色</th><th>適用場景</th></tr></thead>
               <tbody>
-                <tr><td><strong>T</strong></td><td>新增文字框</td><td>快速插入純文字</td></tr>
-                <tr><td><strong>R</strong></td><td>新增矩形</td><td>快速建立色塊背景或便當盒外框</td></tr>
-                <tr><td><strong>C</strong></td><td>新增圓形</td><td>快速建立頭像框或裝飾圓</td></tr>
-                <tr><td><strong>L</strong></td><td>新增線條</td><td>快速拉出分隔線</td></tr>
-                <tr><td><strong>/ (斜線)</strong></td><td>魔法選單</td><td>快速搜尋所有元素與排版工具</td></tr>
+                <tr><td><strong>Google AI Studio</strong></td><td>Gemini 語音模型，語氣極度自然、支援多語系</td><td>自然對白、旁白長文</td></tr>
+                <tr><td><strong>MyEdit</strong></td><td>操作極簡、支援變聲與音效增強</td><td>短影音快速配音</td></tr>
+                <tr><td><strong>ElevenLabs</strong></td><td>全球第一擬真度、情感標籤控制</td><td>高質感電影廣告</td></tr>
+                <tr><td><strong>剪映/CapCut 內建</strong></td><td>一鍵文字轉語音、熱門短影音音色</td><td>快節奏社群短片</td></tr>
               </tbody>
             </table>
           </div>
+        </div>
 
-          <div class="sub-section" id="canva-tags">
-            <div class="sub-title" style="color:#ea580c;">元素搜尋關鍵字</div>
-            <div class="alert-box" style="background:#fff7ed; border-color:#ea580c; color:#9a3412;">
-              🎯 <strong>推薦搜尋關鍵字</strong>：
-              <ul style="margin-left: 20px; margin-top: 6px;">
-                <li><strong>Bento grid UI</strong>（現代便當盒幾何網格排版）</li>
-                <li><strong>Minimalist geometric</strong>（極簡幾何色塊裝飾）</li>
-                <li><strong>Abstract doodle</strong>（手繪線條塗鴉質感）</li>
-              </ul>
-            </div>
+        <!-- 單元 4：背景音樂產出 -->
+        <div class="content-card" id="v-unit4" style="margin-bottom: 24px;">
+          <div class="section-header">
+            <div class="section-num badge-teal">4</div>
+            <div class="section-title">背景音樂產出</div>
           </div>
+          <div class="theme-tag" style="background:#ccfbf1; color:#0f766e;">📌 Suno AI 音樂與 Gemini 提示詞產出</div>
 
-          <div class="sub-section" id="canva-copy">
-            <div class="sub-title" style="color:#ea580c;">AI 文案生成（配合海報排版）</div>
+          <div class="sub-section" id="v-music-suno" style="border-top:none; margin-top:0;">
+            <div class="sub-title" style="color:#0d9488;">Suno 商業配樂 Prompt</div>
             <div class="prompt-box">
               <div class="prompt-header">
-                <span class="prompt-label">📌 IG 社群海報三段式文案生成</span>
-                <button class="copy-btn" onclick="copyPrompt('p15', this)">複製</button>
+                <span class="prompt-label">📌 活潑快節奏廣告 Jingle</span>
+                <button class="copy-btn" onclick="copyPrompt('vp3', this)">複製</button>
               </div>
-              <pre class="prompt-content" id="p15">請幫我為一張【IG正方形促銷海報】撰寫吸引人的文案：
-- 主題：【例如：春季新品上市 / 限時快閃優惠】
-- 格式要求：
-  1. 主標題（吸睛強烈，不超過 10 個字）
-  2. 副標題（說明核心賣點，不超過 20 個字）
-  3. 行動呼籲 CTA（引導點擊或到店，如「限時 3 天・立即預約」）
-- 請提供 3 組不同風格供挑選。</pre>
+              <pre class="prompt-content" id="vp3">Upbeat energetic pop commercial jingle, 120 BPM, catchy acoustic guitar, bright piano chords, punchy drums, uplifting, inspiring, modern corporate advertisement.</pre>
             </div>
           </div>
         </div>
 
-      </div>
-
-      <!-- ==================== 主題 2：AI 影音廣告（100% 完整還原） ==================== -->
-      <div id="theme-video" class="theme-content" style="display: none;">
-        
-        <!-- 影音單元 1 -->
-        <div class="content-card" style="margin-bottom: 24px;">
+        <!-- 單元 5：集大成與最終剪輯 -->
+        <div class="content-card" id="v-unit5">
           <div class="section-header">
-            <div class="section-num badge-5">1</div>
-            <div class="section-title">AI 影音廣告企劃與黃金分鏡腳本</div>
+            <div class="section-num badge-blue">5</div>
+            <div class="section-title">集大成與最終剪輯</div>
           </div>
-          <div class="theme-tag" style="background:#ffe4e6; color:#be123c;">📌 爆款短影音結構與 6 幕分鏡表設計</div>
+          <div class="theme-tag">📌 CapCut (剪映) 快速出片工作流</div>
 
-          <div class="alert-box" style="background:#fff1f2; border-color:#e11d48; color:#9f1239;">
-            💡 <strong>短影音黃金 3 秒法則</strong>：前 3 秒必須透過「強烈視覺反差」或「痛點直擊問題」留住受眾，隨後迅速帶出產品解法與信任證明。
-          </div>
-
-          <div class="prompt-box">
-            <div class="prompt-header">
-              <span class="prompt-label">📌 30秒 6幕動態廣告分鏡腳本 Prompt</span>
-              <button class="copy-btn" onclick="copyPrompt('pv1', this)">複製</button>
-            </div>
-            <pre class="prompt-content" id="pv1">你是一位擅長高轉化率短影音廣告的導演。
-請針對【產品名稱/品牌】撰寫一支 30 秒的動態短影音廣告分鏡表。
-
-【分鏡要求】
-- 總共 6 個分鏡（每鏡 5 秒）
-- 結構需符合【黃金 3 秒吸睛 ➔ 痛點共鳴 ➔ 產品登場 ➔ 核心賣點 ➔ 成果展示 ➔ 行動呼籲(CTA)】
-
-【請以 Markdown 表格輸出以下欄位】：
-| 鏡號 | 時間 | 畫面視覺描述 (Visual) | 運鏡方式 (Camera) | 旁白文案 (VO) | 音效提示 (SFX) |</pre>
-          </div>
-
-          <div class="prompt-box">
-            <div class="prompt-header">
-              <span class="prompt-label">📌 15秒 爆款電商短影音腳本 Prompt</span>
-              <button class="copy-btn" onclick="copyPrompt('pv2', this)">複製</button>
-            </div>
-            <pre class="prompt-content" id="pv2">請為【商品名稱】設計一支 15 秒的極速轉換短影音分鏡：
-- 節奏：快節奏卡點風格（3 幕，每幕 5 秒）
-- 核心焦點：第一秒直擊消費者最大痛點，最後三秒強力促購
-- 輸出欄位：畫面描述、鏡頭動作、字幕大字、背景音樂節奏建議</pre>
+          <div class="sub-section" id="v-capcut-list" style="border-top:none; margin-top:0;">
+            <div class="sub-title" style="color:#2563eb;">CapCut (剪映) 剪輯清單</div>
+            <ul style="font-size:0.95rem; color:#475569; margin-left:24px;">
+              <li>1. 匯入 6 段 AI 生成之影片片段，按鏡號排入軌道</li>
+              <li>2. 匯入配音音軌，利用「自動辨識字幕」產生雙語字幕</li>
+              <li>3. 匯入 Suno BGM，將音量調至 15%~20%，開啟自動閃避 (Audio Ducking)</li>
+              <li>4. 加入轉場特效與畫面包裝，確認 16:9 尺寸匯出 4K 60fps</li>
+            </ul>
           </div>
         </div>
 
-        <!-- 影音單元 2 -->
-        <div class="content-card" style="margin-bottom: 24px;">
-          <div class="section-header">
-            <div class="section-num badge-5">2</div>
-            <div class="section-title">角色一致性與 IP 多角度設計 (Character Sheet)</div>
-          </div>
-          <div class="theme-tag" style="background:#ffe4e6; color:#be123c;">📌 打造固定角色 IP、三視圖與多角度表情</div>
-
-          <p style="font-size:0.9rem; color:#475569; margin-bottom:12px;">在 Midjourney 或生圖工具中，透過「角色多角度設計表 (Character Design Sheet)」鎖定角色特徵，是生成連貫影片的關鍵步驟。</p>
-
-          <div class="prompt-box">
-            <div class="prompt-header">
-              <span class="prompt-label">📌 角色多角度三視圖與表情設定 Prompt</span>
-              <button class="copy-btn" onclick="copyPrompt('pv3', this)">複製</button>
-            </div>
-            <pre class="prompt-content" id="pv3">Character design sheet of [角色外觀描述，例如：a cute cartoon duck wearing a chef hat], 
-multiple angles, front view, side view, back view, 3/4 turn view, 
-multiple facial expressions (happy, surprised, thinking, excited), 
-white background, model sheet style, 3D Pixar style, 8k resolution, octane render, clean lines --ar 16:9 --v 6.0</pre>
-          </div>
-
-          <div class="prompt-box">
-            <div class="prompt-header">
-              <span class="prompt-label">📌 虛擬代言人/吉祥物 IP 概念設定 Prompt</span>
-              <button class="copy-btn" onclick="copyPrompt('pv4', this)">複製</button>
-            </div>
-            <pre class="prompt-content" id="pv4">請為我的品牌【品牌名稱/產業】設計一位專屬的「AI 品牌吉祥物/虛擬代言人」：
-1. 角色背景故事與個性設定（包含星座、口頭禪、核心價值觀）
-2. 視覺外觀特徵（顏色色號、標誌性配件、服裝風格）
-3. 適合的生圖英文 Prompt（包含 3D 盲盒公仔風與擬真電影風兩種版本）</pre>
-          </div>
-        </div>
-
-        <!-- 影音單元 3 -->
-        <div class="content-card" style="margin-bottom: 24px;">
-          <div class="section-header">
-            <div class="section-num badge-5">3</div>
-            <div class="section-title">AI 影片生成與專業運鏡提示詞 (Kling / Runway / Luma / Sora)</div>
-          </div>
-          <div class="theme-tag" style="background:#ffe4e6; color:#be123c;">📌 攝影機運動指令、動態幅度與生影語法</div>
-
-          <div class="title-icon">▶️ 專業運鏡指令對照表 (Camera Movements)</div>
-          <table class="styled-table">
-            <thead><tr><th>運鏡術語</th><th>英文指令</th><th>視覺效果與適用情境</th></tr></thead>
-            <tbody>
-              <tr><td><strong>推進鏡頭</strong></td><td>Push in / Zoom in</td><td>聚焦主體細節、加強情緒張力</td></tr>
-              <tr><td><strong>拉遠鏡頭</strong></td><td>Pull out / Zoom out</td><td>展現環境全貌、營造孤獨或宏大感</td></tr>
-              <tr><td><strong>水平平移</strong></td><td>Pan left / Pan right</td><td>跟隨移動目標、掃視周圍場景</td></tr>
-              <tr><td><strong>垂直俯仰</strong></td><td>Tilt up / Tilt down</td><td>展示高大建築、角色由下而上的霸氣感</td></tr>
-              <tr><td><strong>環繞運鏡</strong></td><td>Orbit shot / 360-degree arc</td><td>3D 立體展示產品或英雄式登場</td></tr>
-              <tr><td><strong>無人機空拍</strong></td><td>FPV Drone shot / Aerial view</td><td>壯麗風景、極速穿梭的動態視覺</td></tr>
-              <tr><td><strong>慢動作</strong></td><td>Slow motion / 120fps</td><td>食物特寫、液體飛濺、精緻質感展現</td></tr>
-            </tbody>
-          </table>
-
-          <div class="prompt-box">
-            <div class="prompt-header">
-              <span class="prompt-label">📌 圖生影片 (Image-to-Video) 提示詞範本</span>
-              <button class="copy-btn" onclick="copyPrompt('pv5', this)">複製</button>
-            </div>
-            <pre class="prompt-content" id="pv5">A dynamic camera slowly pushes in towards the main character, 
-cinematic lighting, warm sunlight streaming through the window, 
-subtle particles floating in the air, smooth natural movement, 4k high quality, hyperrealistic.</pre>
-          </div>
-
-          <div class="prompt-box">
-            <div class="prompt-header">
-              <span class="prompt-label">📌 文生影片 (Text-to-Video) 提示詞範本</span>
-              <button class="copy-btn" onclick="copyPrompt('pv6', this)">複製</button>
-            </div>
-            <pre class="prompt-content" id="pv6">Cinematic commercial shot of a delicious sizzling dish being served on a rustic wooden table, 
-steam rising gracefully, mouthwatering food commercial, macro close-up lens, 
-slow motion 60fps, shallow depth of field, warm inviting atmosphere, professional studio lighting.</pre>
-          </div>
-        </div>
-
-        <!-- 影音單元 4 -->
-        <div class="content-card">
-          <div class="section-header">
-            <div class="section-num badge-5">4</div>
-            <div class="section-title">AI 配音、Suno 廣告配樂與剪輯工作流</div>
-          </div>
-          <div class="theme-tag" style="background:#ffe4e6; color:#be123c;">📌 MyEdit / ElevenLabs / Suno AI / 剪映後製</div>
-
-          <div class="prompt-box">
-            <div class="prompt-header">
-              <span class="prompt-label">📌 Suno AI 廣告背景音樂 (BGM) 生成 Prompt</span>
-              <button class="copy-btn" onclick="copyPrompt('pv7', this)">複製</button>
-            </div>
-            <pre class="prompt-content" id="pv7">【風格 Style Prompt】：
-Upbeat energetic pop commercial jingle, 120 BPM, catchy acoustic guitar, bright piano chords, punchy drums, uplifting, inspiring, modern corporate advertisement.
-
-【結構結構標籤】：
-[Intro: Catchy acoustic strum]
-[Verse: Light rhythm, uplifting mood]
-[Chorus: Full band explosive energy, joyful melody]
-[Outro: Clean fade out with memorable piano hook]</pre>
-          </div>
-
-          <div class="prompt-box">
-            <div class="prompt-header">
-              <span class="prompt-label">📌 AI 語音旁白語氣與情緒控制 Prompt (ElevenLabs / MyEdit)</span>
-              <button class="copy-btn" onclick="copyPrompt('pv8', this)">複製</button>
-            </div>
-            <pre class="prompt-content" id="pv8">請將以下廣告文案加上「語氣朗讀指引標籤」（例如：[熱情]、[沉穩輕聲]、[停頓0.5秒]、[重音強調]），
-以利於在 AI 語音生成工具中獲得最具感染力的真人旁白效果：
-
-【待處理文案】：
-「你是不是也厭倦了每天繁瑣的重複工作？現在，只要點擊一下，AI 就能幫你完成所有排版與文案。立即體驗，解放你的下班時間！」</pre>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- ==================== 主題 3：北海道旅遊 ==================== -->
-      <div id="theme-travel" class="theme-content" style="display: none;">
-        <div class="content-card">
-          <div class="section-header">
-            <div class="section-num" style="background:#0284c7;">✈️</div>
-            <div class="section-title">北海道旅遊企劃與 Prompt</div>
-          </div>
-          <div class="theme-tag" style="background:#e0f2fe; color:#0369a1;">📌 主題：自由行行程規劃與景點推薦</div>
-          
-          <div class="prompt-box">
-            <div class="prompt-header">
-              <span class="prompt-label">📌 5天4夜北海道自駕行程規劃</span>
-              <button class="copy-btn" onclick="copyPrompt('pt1', this)">複製</button>
-            </div>
-            <pre class="prompt-content" id="pt1">你是一位擁有10年經驗的北海道自由行旅遊達人。
-我正在規劃一趟【5天4夜】的北海道自駕旅遊，請為我設計詳細行程。
-
-【旅遊需求】
-- 人數：5位大人
-- 出發月份：7月中旬（賞薰衣草旺季）
-- 交通方式：新千歲機場租車自駕
-- 核心景點需求：札幌市區、小樽運河、富良野花田、美瑛青池
-
-【輸出格式】
-1. 每日時間軸行程規劃（上午/下午/晚上）
-2. 每日自駕預估開車時間與路線提示
-3. 必吃在地美食推薦清單
-4. 夏季自駕專屬注意事項與停車指南</pre>
-          </div>
-
-          <div class="prompt-box">
-            <div class="prompt-header">
-              <span class="prompt-label">📌 在地私房美食與特色伴手禮提煉</span>
-              <button class="copy-btn" onclick="copyPrompt('pt2', this)">複製</button>
-            </div>
-            <pre class="prompt-content" id="pt2">請針對北海道「札幌、小樽、函館」三個地區，為我整理最道地的在地美食推薦：
-- 排除大排長龍的普通觀光客連鎖店，優先推薦當地人常吃的隱藏版好店
-- 依料理分類（湯咖哩、成吉思汗烤羊肉、海鮮丼、拉麵、甜點）
-- 輸出表格包含：店名、招牌菜色、預估人均消費、推薦理由</pre>
-          </div>
-        </div>
       </div>
 
     </main>
 
-    <!-- 右側工具快捷欄 -->
+    <!-- ==================== 右側工具快捷欄（動態聯動） ==================== -->
     <aside class="sidebar-right">
-      <div class="menu-title">常用 AI 文字工具</div>
-      <a href="https://gemini.google.com" target="_blank" class="tool-btn">Gemini ↗</a>
-      <a href="https://chatgpt.com" target="_blank" class="tool-btn">ChatGPT ↗</a>
-      <a href="https://notebooklm.google.com" target="_blank" class="tool-btn">NotebookLM ↗</a>
+      
+      <!-- 咖啡館 工具 -->
+      <div id="tools-coffee" class="tools-group">
+        <div class="menu-title">AI 工具</div>
+        <a href="https://gemini.google.com" target="_blank" class="tool-btn">Gemini ↗</a>
+        <a href="https://chatgpt.com" target="_blank" class="tool-btn">ChatGPT ↗</a>
+        <a href="https://notebooklm.google.com" target="_blank" class="tool-btn">NotebookLM ↗</a>
+        <a href="https://gamma.app" target="_blank" class="tool-btn">Gamma ↗</a>
+        <a href="https://www.canva.com" target="_blank" class="tool-btn">Canva ↗</a>
+        <div class="menu-title" style="margin-top:20px;">課程工具</div>
+        <a href="https://zoego99.github.io/vizgo/index.html" target="_blank" class="tool-btn" style="color:#0d9488;">資訊圖 Prompt 生成器 ↗</a>
+      </div>
 
-      <div class="menu-title" style="margin-top: 20px;">影音生成工具</div>
-      <a href="https://klingai.com" target="_blank" class="tool-btn">Kling 快手可靈 ↗</a>
-      <a href="https://runwayml.com" target="_blank" class="tool-btn">Runway Gen-3 ↗</a>
-      <a href="https://lumalabs.ai/dream-machine" target="_blank" class="tool-btn">Luma Dream Machine ↗</a>
-      <a href="https://myedit.online/tw/" target="_blank" class="tool-btn">MyEdit 語音/音效 ↗</a>
-      <a href="https://suno.com" target="_blank" class="tool-btn">Suno 音樂生成 ↗</a>
+      <!-- 北海道旅遊 工具 -->
+      <div id="tools-travel" class="tools-group" style="display:none;">
+        <div class="menu-title">頁面導覽</div>
+        <button class="tool-btn back-btn" onclick="switchTheme('coffee', document.querySelectorAll('.tab-btn')[0])">← P1 情境練習</button>
+        <div class="menu-title" style="margin-top:20px;">AI 工具</div>
+        <a href="https://gemini.google.com" target="_blank" class="tool-btn">Gemini ↗</a>
+        <a href="https://chatgpt.com" target="_blank" class="tool-btn">ChatGPT ↗</a>
+        <a href="https://notebooklm.google.com" target="_blank" class="tool-btn">NotebookLM ↗</a>
+        <a href="https://gamma.app" target="_blank" class="tool-btn">Gamma ↗</a>
+        <a href="https://www.canva.com" target="_blank" class="tool-btn">Canva ↗</a>
+        <div class="menu-title" style="margin-top:20px;">課程工具</div>
+        <a href="https://zoego99.github.io/vizgo/index.html" target="_blank" class="tool-btn" style="color:#0d9488;">資訊圖 Prompt 生成器 ↗</a>
+      </div>
 
-      <div class="menu-title" style="margin-top: 20px;">簡報與設計</div>
-      <a href="https://gamma.app" target="_blank" class="tool-btn">Gamma 簡報 ↗</a>
-      <a href="https://www.canva.com" target="_blank" class="tool-btn">Canva 設計 ↗</a>
+      <!-- AI 影音廣告 工具 (完全依截圖分類) -->
+      <div id="tools-video" class="tools-group" style="display:none;">
+        <div class="menu-title">頁面導覽</div>
+        <button class="tool-btn back-btn" onclick="switchTheme('coffee', document.querySelectorAll('.tab-btn')[0])">← P1 情境練習</button>
+        <div class="menu-title" style="margin-top:20px;">腳本與圖像</div>
+        <a href="https://gemini.google.com" target="_blank" class="tool-btn">Gemini ↗</a>
+        <a href="https://chatgpt.com" target="_blank" class="tool-btn">ChatGPT ↗</a>
+        <div class="menu-title" style="margin-top:20px;">影片生成</div>
+        <a href="https://labs.google/flow" target="_blank" class="tool-btn">Google Flow ↗</a>
+        <a href="https://klingai.com" target="_blank" class="tool-btn">Kling ↗</a>
+        <div class="menu-title" style="margin-top:20px;">配音工具</div>
+        <a href="https://aistudio.google.com" target="_blank" class="tool-btn">Google AI Studio ↗</a>
+        <a href="https://myedit.online/tw/" target="_blank" class="tool-btn">MyEdit ↗</a>
+        <div class="menu-title" style="margin-top:20px;">配樂工具</div>
+        <a href="https://suno.com" target="_blank" class="tool-btn">Suno ↗</a>
+      </div>
+
     </aside>
 
   </div>
@@ -887,12 +782,26 @@ Upbeat energetic pop commercial jingle, 120 BPM, catchy acoustic guitar, bright 
       });
     }
 
-    // 頂部主題切換功能
-    function switchTheme(themeId, btn) {
-      document.querySelectorAll('.theme-content').forEach(el => el.style.display = 'none');
+    // 核心：三欄同步聯動切換功能
+    function switchTheme(themeKey, btn) {
+      // 1. 切換中間主內容
+      document.querySelectorAll('.content-group').forEach(el => el.style.display = 'none');
+      document.getElementById('content-' + themeKey).style.display = 'block';
+
+      // 2. 切換左側課程單元選單
+      document.querySelectorAll('.sidebar-group').forEach(el => el.style.display = 'none');
+      document.getElementById('sidebar-' + themeKey).style.display = 'block';
+
+      // 3. 切換右側專屬工具欄
+      document.querySelectorAll('.tools-group').forEach(el => el.style.display = 'none');
+      document.getElementById('tools-' + themeKey).style.display = 'block';
+
+      // 4. 切換頂部按鈕 Active 樣式
       document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
-      document.getElementById(themeId).style.display = 'block';
       btn.classList.add('active');
+
+      // 5. 滾動回頂端
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   </script>
 </body>
