@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jimmy AI Prompt</title>
+  <title>AI Prompt</title>
   <style>
     :root {
       --primary: #2563eb;
@@ -72,7 +72,7 @@
     .styled-table tr:nth-child(even) { background-color: #fafbfc; }
 
     /* 提示詞卡片 */
-    .prompt-box { background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; margin: 14px 0 20px; overflow: hidden; }
+    .prompt-box { background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; margin: 14px 0 10px; overflow: hidden; }
     .prompt-header { background: #f1f5f9; padding: 8px 14px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; }
     .prompt-label { font-size: 0.85rem; font-weight: 700; color: #334155; }
     .copy-btn { background: #fff; color: #334155; border: 1px solid #cbd5e1; padding: 4px 12px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; cursor: pointer; transition: 0.2s; }
@@ -80,9 +80,17 @@
     .prompt-content { padding: 14px; margin: 0; font-family: Consolas, Monaco, "Courier New", monospace; font-size: 0.875rem; white-space: pre-wrap; word-break: break-word; color: #1e293b; line-height: 1.5; background: #ffffff; }
 
     .sub-section { margin-top: 28px; padding-top: 20px; border-top: 1px dashed #e2e8f0; }
-    .sub-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 10px; }
-    .alert-box { background: #eff6ff; border-left: 4px solid var(--primary); padding: 12px 16px; border-radius: 0 6px 6px 0; font-size: 0.875rem; margin: 10px 0 16px; color: #1e40af; }
-    .note-text { font-size: 0.85rem; color: #64748b; margin-top: -10px; margin-bottom: 16px; }
+    .sub-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 14px; }
+    
+    /* 提示框樣式補充 */
+    .alert-box { background: #eff6ff; border-left: 4px solid var(--primary); padding: 12px 16px; border-radius: 0 6px 6px 0; font-size: 0.9rem; margin: 10px 0 16px; color: #1e40af; }
+    .alert-warning { background: #fffbeb; border-left: 4px solid #f59e0b; padding: 16px; border-radius: 0 6px 6px 0; font-size: 0.9rem; margin: 10px 0 20px; color: #92400e; }
+    .alert-warning ul { margin-left: 24px; margin-top: 8px; }
+    .alert-warning li { margin-bottom: 4px; }
+    
+    /* 小標籤與備註 */
+    .note-text { font-size: 0.9rem; color: #475569; margin-top: 4px; margin-bottom: 24px; font-weight: 500; }
+    .title-icon { font-weight: 700; color: #1e40af; margin-top: 24px; margin-bottom: 8px; font-size: 1rem; display: flex; align-items: center; gap: 6px; }
 
     /* 右側快捷工具 */
     .tool-btn { display: flex; align-items: center; justify-content: space-between; padding: 9px 12px; border: 1px solid var(--border); border-radius: 6px; margin-bottom: 8px; text-decoration: none; color: #334155; font-size: 0.875rem; font-weight: 500; transition: 0.2s; }
@@ -98,15 +106,13 @@
 
   <!-- 頂部導覽列 -->
   <header>
-    <div class="header-container">
-      <div class="brand">
+<div class="brand">
         <div class="brand-logo">AI</div>
         <div class="brand-text">
-          <h1>AI Prompt</h1>
-          <p>Jimmy</p>
+          <h1>Jimmy AI Prompt</h1>
+          <p>Jimmy｜Jimmy120865@gmail.com</p>
         </div>
       </div>
-      <!-- 頂部主題按鈕 -->
       <nav class="nav-tabs">
         <button class="tab-btn active" onclick="switchTheme('theme-coffee', this)">咖啡館 / 寵物</button>
         <button class="tab-btn" onclick="switchTheme('theme-travel', this)">北海道旅遊</button>
@@ -123,7 +129,6 @@
     <aside class="sidebar-left">
       <div class="menu-title">課程單元</div>
       <ul class="menu-list">
-        
         <!-- 單元 1 -->
         <li class="menu-item">
           <a href="#unit1" class="menu-link"><span class="menu-badge badge-1">1</span> AI 協作四步驟</a>
@@ -135,7 +140,6 @@
             <li><a href="#sub-faq">› 常見 AI 詢問</a></li>
           </ul>
         </li>
-
         <!-- 單元 2 -->
         <li class="menu-item">
           <a href="#unit2" class="menu-link"><span class="menu-badge badge-2">2</span> NotebookLM 應用</a>
@@ -147,7 +151,6 @@
             <li><a href="#nb-survey">› 問卷調查練習</a></li>
           </ul>
         </li>
-
         <!-- 單元 3 -->
         <li class="menu-item">
           <a href="#unit3" class="menu-link"><span class="menu-badge badge-3">3</span> Gamma 簡報製作</a>
@@ -157,7 +160,6 @@
             <li><a href="#gamma-template">› 課程統一 範本</a></li>
           </ul>
         </li>
-
         <!-- 單元 4 -->
         <li class="menu-item">
           <a href="#unit4" class="menu-link"><span class="menu-badge badge-4">4</span> Canva 海報與社群</a>
@@ -167,7 +169,6 @@
             <li><a href="#canva-copy">› AI 文案生成</a></li>
           </ul>
         </li>
-
       </ul>
     </aside>
 
@@ -206,8 +207,14 @@
             </tbody>
           </table>
 
+          <!-- 【問】 -->
           <div class="sub-section" id="sub-ask">
-            <div class="sub-title" style="color:#2563eb;">【問】AI 問 AI — 釐清思路</div>
+            <!-- 修正：紅字標題與完整內文 -->
+            <div class="sub-title" style="color:#991b1b;">【問】 AI 問 AI — 釐清思路 （GPS：G目標+P背景）</div>
+            <div class="alert-box">
+              <strong>AI 幻覺</strong>：AI 產生看似合理，但實際上錯誤、不存在或未經查證的內容。先讓 AI 反向提問釐清需求，確保 AI 在「已知的約束條件」下產出，可降低幻覺風險。AI 結果仍需人工確認、數據需核對來源。
+            </div>
+
             <div class="prompt-box">
               <div class="prompt-header">
                 <span class="prompt-label">📌 S1：Prompt — 釐清思路</span>
@@ -236,8 +243,20 @@
             </div>
           </div>
 
+          <!-- 【定】 -->
           <div class="sub-section" id="sub-rule">
             <div class="sub-title" style="color:#2563eb;">【定】定標準 — 產出草稿</div>
+            
+            <!-- 修正：加入黃色提醒框的三要素 -->
+            <div class="alert-warning">
+              <strong>定標準的三個關鍵要素：</strong>
+              <ul>
+                <li>角色設定：告訴 AI 它是誰 （決定語氣與專業度）</li>
+                <li>格式鎖定：指定輸出結構 （Markdown 標題、表格、條列）</li>
+                <li>邊界聲明：明確禁止 （禁止捏造數據、禁止超過字數）</li>
+              </ul>
+            </div>
+
             <div class="prompt-box">
               <div class="prompt-header">
                 <span class="prompt-label">📌 情境1：完全交給 AI 決定架構</span>
@@ -264,10 +283,46 @@
 - 每點不超過30字
 - 禁止捏造具體數據(預算/業績僅寫「待填入」)</pre>
             </div>
+            <!-- 修正：補上箭頭說明 -->
+            <p class="note-text">➔ 適合：還沒想好怎麼分章節，想先看看 AI 怎麼安排，再決定要不要調整</p>
+
+            <div class="prompt-box">
+              <div class="prompt-header">
+                <span class="prompt-label">📌 情境2：先問 AI 建議架構，但不急著生成內容</span>
+                <button class="copy-btn" onclick="copyPrompt('p4', this)">複製</button>
+              </div>
+              <pre class="prompt-content" id="p4">你是一位資深餐飲品牌顧問，擅長社區型咖啡館的定位與開店策略。
+
+- 根據我們剛才討論的內容，請先不要急著寫草稿。
+- 請你先提出2~3種可能的「內容架構」安排方式（列出章節標題即可）
+- 簡短說明每種架構的適用情境，等我選定方向後再開始產出文案。</pre>
+            </div>
+            <!-- 修正：補上箭頭說明 -->
+            <p class="note-text">➔ 適合：想要參與架構決策，但不想自己從零開始想，讓 AI 先給選項</p>
           </div>
 
+          <!-- 【骨】 -->
           <div class="sub-section" id="sub-bone">
             <div class="sub-title" style="color:#2563eb;">【骨】長骨架 — 邏輯骨架校準</div>
+            
+            <!-- 修正：補上「管住AI三招」表格 -->
+            <div class="title-icon">▶️ 管住 AI 三招</div>
+            <table class="styled-table">
+              <thead><tr><th>招式</th><th>指令關鍵字</th><th>說明</th></tr></thead>
+              <tbody>
+                <tr><td>① 宣告禁令</td><td>「禁止填充內文」「只出標題與子項目」</td><td>直接說不要什麼</td></tr>
+                <tr><td>② 指定格式</td><td>「以 Markdown 標題層級輸出」</td><td>用格式約束輸出範圍</td></tr>
+                <tr><td>③ 等待確認</td><td>「輸出大綱後停止，等我確認後再繼續」</td><td>讓人控制節奏</td></tr>
+              </tbody>
+            </table>
+
+            <!-- 修正：補上「簡報時間與張數參考」 -->
+            <div class="title-icon">▶️ 簡報時間與張數參考</div>
+            <ul style="font-size: 0.95rem; color: #475569; margin-left: 28px; margin-bottom: 24px;">
+              <li style="margin-bottom: 6px;">通常 1 分鐘對應 1~1.5 張投影片 （一般節奏）</li>
+              <li>5 分鐘報告 ➔ 建議 8-10 張 ／ 10 分鐘報告 ➔ 建議 12-15 張</li>
+            </ul>
+
             <div class="prompt-box">
               <div class="prompt-header">
                 <span class="prompt-label">📌 版本一：簡單版</span>
@@ -285,8 +340,43 @@
 - 僅輸出邏輯骨架後停止，等我確認後再繼續
 - 強制使用 Markdown code block 區塊輸出</pre>
             </div>
+
+            <div class="prompt-box">
+              <div class="prompt-header">
+                <span class="prompt-label">📌 版本二：完整版（對應視覺規格）</span>
+                <button class="copy-btn" onclick="copyPrompt('p6', this)">複製</button>
+              </div>
+<!-- 修正：1:1 還原圖片中參、視覺規格的排版 -->
+<pre class="prompt-content" id="p6"># 任務進度：【簡報大綱校準階段】
+
+## 銜接背景與角色設定
+- 資料來源：依據我們剛才完成的「咖啡館開店行銷企劃」報告
+- AI 角色：資深餐飲品牌顧問，協助將企劃轉化為具說服力的簡報邏輯
+- 簡報對象：咖啡館投資夥伴與創業顧問，偏好溫度感、重視可執行性
+
+## 簡報規格參數
+- 上台時間：10 分鐘
+- 投影片張數：約 8 張
+- 輸出格式：以「投影片 [編號]：[標題]」呈現
+- 每頁必含：核心論點摘要 + 建議視覺化圖型
+
+## 參、視覺與版面規格
+- 整體風格：溫暖質感風（木質紋理感、手寫字體點綴）
+- 色系：三色限定
+  主色：拿鐵棕 #6F4E37
+  輔色：奶泡白 #F5EFE6
+  底色：焦糖金 #C8924B
+- 視覺質感：無陰影、無漸層、線條手繪感
+- 封面設計：強制預留上方 30% 標題空白區
+- 內頁排版：複雜數據頁標註「便當盒排版法」或「網格矩陣」
+
+## 強制約束
+- 禁止產出具體簡報文案、旁白或生圖指令
+- 僅輸出邏輯骨架後停止，等我確認後再繼續</pre>
+            </div>
           </div>
 
+          <!-- 【生】 -->
           <div class="sub-section" id="sub-prod">
             <div class="sub-title" style="color:#2563eb;">【生】生結果 — 產出簡報</div>
             <div class="prompt-box">
@@ -303,6 +393,7 @@
             </div>
           </div>
 
+          <!-- 常見 AI 詢問 -->
           <div class="sub-section" id="sub-faq">
             <div class="sub-title" style="color:#2563eb;">常見 AI 詢問</div>
             <div class="prompt-box">
